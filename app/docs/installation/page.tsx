@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button"
+import { CodeBlock } from "@/app/components/code-block"
 
 export default function InstallationPage() {
   return (
@@ -51,17 +52,33 @@ export default function InstallationPage() {
           
           <h3 className="text-2xl font-bold mt-6 mb-3">Step 1: Copy the utils file</h3>
           <p>
-            First, copy the utility function file. Create a <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file in your project:
+            First, copy the utility function file. Create a <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> or <code className="bg-muted px-1 py-0.5 rounded">lib/utils.js</code> file in your project:
           </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`import { type ClassValue, clsx } from "clsx"
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2"><strong>TypeScript:</strong></p>
+              <CodeBlock
+                code={`import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
-}`}</code>
-            </pre>
+}`}
+                language="ts"
+              />
+            </div>
+            <div>
+              <p className="mb-2"><strong>JavaScript:</strong></p>
+              <CodeBlock
+                code={`import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs) {
+  return twMerge(clsx(inputs))
+}`}
+                language="js"
+              />
+            </div>
           </div>
 
           <h3 className="text-2xl font-bold mt-6 mb-3">Step 2: Copy component code</h3>
@@ -83,7 +100,7 @@ export function cn(...inputs: ClassValue[]) {
           </p>
           <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
             <pre className="text-sm font-mono">
-              <code>{`import { Button } from "@/components/ui/button"
+              <code>{`import { Button } from "@/app/components/ui/button"
 
 export default function MyPage() {
   return <Button>Click me</Button>

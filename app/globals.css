@@ -80,5 +80,42 @@
   .neobrutalism-border-thick {
     border: 3px solid currentColor;
   }
+  
+  /* Dithering pattern */
+  .dither-pattern {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+    background-size: 4px 4px;
+  }
+  
+  .dither-pattern-diagonal {
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 0, 0, 0.04) 1px,
+        rgba(0, 0, 0, 0.04) 2px
+      );
+    background-size: 4px 4px;
+  }
+  
+  .dither-pattern-dot {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
 }
 

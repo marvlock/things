@@ -1,15 +1,29 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Navbar } from "@/components/navbar"
+"use client"
+
+import Link from "next/link"
+import { Button } from "@/app/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { Input } from "@/app/components/ui/input"
+import { Textarea } from "@/app/components/ui/textarea"
+import { Switch } from "@/app/components/ui/switch"
+import { Slider } from "@/app/components/ui/slider"
+import { Navbar } from "@/app/components/navbar"
+import * as React from "react"
 
 export default function Home() {
+  const [switchChecked, setSwitchChecked] = React.useState(false)
+  const [sliderValue, setSliderValue] = React.useState([50])
+
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-background relative">
+      {/* Dithering overlay */}
+      <div className="fixed inset-0 dither-pattern pointer-events-none z-0 opacity-50" />
       
-      {/* Hero Section */}
-      <section className="py-20 md:py-32">
+      <div className="relative z-10">
+        <Navbar />
+        
+        {/* Hero Section */}
+        <section className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="mb-6 text-5xl font-bold leading-tight md:text-7xl">
@@ -22,9 +36,11 @@ export default function Home() {
             </p>
             
             <div className="flex items-center justify-center">
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 font-bold">
-                View Components
-              </Button>
+              <Link href="/docs/components/button">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6 font-bold">
+                  View Components
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -124,6 +140,51 @@ export default function Home() {
               </p>
             </CardContent>
           </Card>
+
+          <Card className="border-4">
+            <CardHeader>
+              <CardTitle>Textarea</CardTitle>
+              <CardDescription>
+                Multi-line text input with blocky styling
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Textarea placeholder="Enter your message..." />
+            </CardContent>
+          </Card>
+
+          <Card className="border-4">
+            <CardHeader>
+              <CardTitle>Switch</CardTitle>
+              <CardDescription>
+                Toggle switch with blocky styling
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-bold">Enable feature</label>
+                <Switch checked={switchChecked} onChange={(e) => setSwitchChecked(e.target.checked)} />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-4">
+            <CardHeader>
+              <CardTitle>Slider</CardTitle>
+              <CardDescription>
+                Range slider with blocky styling
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-bold">Value</label>
+                  <span className="text-sm font-bold">{sliderValue[0]}%</span>
+                </div>
+                <Slider value={sliderValue} onValueChange={setSliderValue} />
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -137,12 +198,16 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex justify-center gap-4">
-            <Button variant="outline" size="lg" className="bg-background text-foreground">
-              Read the Docs
-            </Button>
-            <Button size="lg" variant="secondary" className="bg-secondary text-secondary-foreground">
-              View on GitHub
-            </Button>
+            <Link href="/docs">
+              <Button variant="outline" size="lg" className="bg-background text-foreground">
+                Read the Docs
+              </Button>
+            </Link>
+            <Link href="https://github.com/marvlock/things" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="secondary" className="bg-secondary text-secondary-foreground">
+                View on GitHub
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </section>
@@ -161,17 +226,17 @@ export default function Home() {
               <h3 className="mb-4 text-lg font-bold">Resources</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#docs" className="hover:text-primary font-bold">
+                  <Link href="/docs" className="hover:text-primary font-bold">
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#components" className="hover:text-primary font-bold">
+                  <Link href="/docs/components/button" className="hover:text-primary font-bold">
                     Components
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://github.com" className="hover:text-primary font-bold">
+                  <a href="https://github.com/marvlock/things" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-bold">
                     GitHub
                   </a>
                 </li>
@@ -189,6 +254,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/app/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { CodeBlock } from "@/app/components/code-block"
 
 export default function CardDocsPage() {
   return (
@@ -18,21 +19,200 @@ export default function CardDocsPage() {
             Built from scratch using React and native HTML div elements. Completely independent.
           </p>
 
+          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2">
+                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/card.tsx</code>:
+              </p>
+              <CodeBlock
+                code={`import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-lg border-2 border-foreground bg-card text-card-foreground neobrutalism-shadow",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
+
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
+
+const CardTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h3
+    ref={ref}
+    className={cn(
+      "text-2xl font-bold leading-none tracking-tight",
+      className
+    )}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
+
+const CardDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
+
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
+
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }`}
+                language="tsx"
+              />
+            </div>
+
+            <div>
+              <p className="mb-2">
+                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/card.jsx</code>:
+              </p>
+              <CodeBlock
+                code={`import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Card = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-lg border-2 border-foreground bg-card text-card-foreground neobrutalism-shadow",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
+
+const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
+
+const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
+  <h3
+    ref={ref}
+    className={cn(
+      "text-2xl font-bold leading-none tracking-tight",
+      className
+    )}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
+
+const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
+
+const CardContent = React.forwardRef(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
+
+const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }`}
+                language="jsx"
+              />
+            </div>
+          </div>
+
           <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          <p>
-            Copy the Card component code into your project, then use it like this:
-          </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+          
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2"><strong>TypeScript:</strong></p>
+              <CodeBlock
+                code={`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 <Card>
   <CardHeader>
     <CardTitle>Title</CardTitle>
   </CardHeader>
   <CardContent>Content</CardContent>
-</Card>`}</code>
-            </pre>
+</Card>`}
+                language="tsx"
+              />
+            </div>
+
+            <div>
+              <p className="mb-2"><strong>JavaScript:</strong></p>
+              <CodeBlock
+                code={`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+
+<Card>
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+  </CardHeader>
+  <CardContent>Content</CardContent>
+</Card>`}
+                language="jsx"
+              />
+            </div>
           </div>
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 

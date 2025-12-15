@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/app/components/ui/button"
+import { Input } from "@/app/components/ui/input"
+import { CodeBlock } from "@/app/components/code-block"
 
 export default function InputDocsPage() {
   return (
@@ -18,18 +19,100 @@ export default function InputDocsPage() {
             HTML input elements. No dependencies on any UI library.
           </p>
 
+          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2">
+                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/input.tsx</code>:
+              </p>
+              <CodeBlock
+                code={`import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border-2 border-foreground bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 neobrutalism-shadow",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }`}
+                language="tsx"
+              />
+            </div>
+
+            <div>
+              <p className="mb-2">
+                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/input.jsx</code>:
+              </p>
+              <CodeBlock
+                code={`import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Input = React.forwardRef(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border-2 border-foreground bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 neobrutalism-shadow",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }`}
+                language="jsx"
+              />
+            </div>
+          </div>
+
           <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          <p>
-            Copy the Input component code into your project, then use it like this:
-          </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`import { Input } from "@/components/ui/input"
+          
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2"><strong>TypeScript:</strong></p>
+              <CodeBlock
+                code={`import { Input } from "@/components/ui/input"
 
 <Input type="text" placeholder="Enter text" />
 <Input type="email" placeholder="Email" />
-<Input type="password" placeholder="Password" />`}</code>
-            </pre>
+<Input type="password" placeholder="Password" />`}
+                language="tsx"
+              />
+            </div>
+
+            <div>
+              <p className="mb-2"><strong>JavaScript:</strong></p>
+              <CodeBlock
+                code={`import { Input } from "@/components/ui/input"
+
+<Input type="text" placeholder="Enter text" />
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />`}
+                language="jsx"
+              />
+            </div>
           </div>
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
@@ -50,7 +133,11 @@ export default function InputDocsPage() {
               ← Card
             </Button>
           </Link>
-          <div></div>
+          <Link href="/docs/components/textarea">
+            <Button variant="outline" size="lg">
+              Textarea →
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

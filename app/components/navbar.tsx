@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import Link from "next/link";
+import { Button } from "@/app/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = React.useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
       className={cn(
         "sticky top-0 z-50 w-full border-b-2 border-foreground bg-background transition-all",
-        isScrolled && "neobrutalism-shadow-sm"
+        isScrolled && "neobrutalism-shadow-sm",
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -35,7 +35,7 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <Link
-            href="#components"
+            href="/docs/components/button"
             className="text-sm font-bold hover:text-primary transition-colors"
           >
             Components
@@ -51,9 +51,15 @@ export function Navbar() {
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/docs">
-            <Button variant="outline" size="sm">Get Started</Button>
+            <Button variant="outline" size="sm">
+              Get Started
+            </Button>
           </Link>
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://github.com/marvlock/things"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button size="sm">GitHub</Button>
           </Link>
         </div>
@@ -75,7 +81,7 @@ export function Navbar() {
         <div className="md:hidden border-t-2 border-foreground bg-background">
           <div className="container mx-auto px-4 py-4 space-y-4">
             <Link
-              href="#components"
+              href="/docs/components/button"
               className="block text-sm font-bold hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -90,10 +96,12 @@ export function Navbar() {
             </Link>
             <div className="flex flex-col gap-2 pt-4">
               <Link href="/docs" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" size="sm">Get Started</Button>
+                <Button variant="outline" size="sm">
+                  Get Started
+                </Button>
               </Link>
               <Link
-                href="https://github.com"
+                href="https://github.com/marvlock/things"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -105,6 +113,5 @@ export function Navbar() {
         </div>
       )}
     </nav>
-  )
+  );
 }
-

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 
 export default function ChangelogPage() {
   return (
@@ -12,6 +12,16 @@ export default function ChangelogPage() {
 
         <div className="prose prose-lg max-w-none space-y-6">
           <div className="space-y-4">
+            <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
+              <h3 className="text-2xl font-bold mb-2">v0.2.0</h3>
+              <p className="text-muted-foreground mb-4">Current version</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Minor UI improvements</li>
+                <li>Added Textarea component</li>
+                <li>Added Switch component</li>
+                <li>Added Slider component</li>
+              </ul>
+            </div>
             <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
               <h3 className="text-2xl font-bold mb-2">v0.1.0</h3>
               <p className="text-muted-foreground mb-4">Initial release</p>
