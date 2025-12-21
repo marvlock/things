@@ -135,16 +135,12 @@ export { Textarea }`}
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <Link href="/docs/components/input">
+          <Link href="/docs/components/tooltip">
             <Button variant="outline" size="lg">
-              ← Input
+              ← Tooltip
             </Button>
           </Link>
-          <Link href="/docs/components/switch">
-            <Button variant="outline" size="lg">
-              Switch →
-            </Button>
-          </Link>
+          <div></div>
         </div>
       </div>
     </div>

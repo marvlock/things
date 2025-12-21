@@ -268,12 +268,16 @@ function MyComponent() {
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <Link href="/docs/components/switch">
+          <Link href="/docs/components/sonner">
             <Button variant="outline" size="lg">
-              ← Switch
+              ← Sonner
             </Button>
           </Link>
-          <div></div>
+          <Link href="/docs/components/switch">
+            <Button variant="outline" size="lg">
+              Switch →
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

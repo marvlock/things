@@ -128,14 +128,14 @@ export { Input }`}
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <Link href="/docs/components/card">
+          <Link href="/docs/components/image-card">
             <Button variant="outline" size="lg">
-              ← Card
+              ← Image Card
             </Button>
           </Link>
-          <Link href="/docs/components/textarea">
+          <Link href="/docs/components/input-otp">
             <Button variant="outline" size="lg">
-              Textarea →
+              Input OTP →
             </Button>
           </Link>
         </div>

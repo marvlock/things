@@ -224,14 +224,14 @@ function MyComponent() {
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <Link href="/docs/components/textarea">
+          <Link href="/docs/components/sonner">
             <Button variant="outline" size="lg">
-              ← Textarea
+              ← Sonner
             </Button>
           </Link>
-          <Link href="/docs/components/slider">
+          <Link href="/docs/components/table">
             <Button variant="outline" size="lg">
-              Slider →
+              Table →
             </Button>
           </Link>
         </div>

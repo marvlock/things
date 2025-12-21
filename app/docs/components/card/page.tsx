@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { Input } from "@/app/components/ui/input"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { CodeBlock } from "@/app/components/code-block"
 
 export default function CardDocsPage() {
@@ -9,7 +10,7 @@ export default function CardDocsPage() {
       <div className="mx-auto max-w-3xl pl-8 md:pl-12">
         <h1 className="mb-4 text-5xl font-bold">Card</h1>
         <p className="mb-8 text-xl text-muted-foreground">
-          A container component with blocky styling.
+          Displays a card with header, content, and footer.
         </p>
 
         <div className="prose prose-lg max-w-none space-y-6">
@@ -221,27 +222,67 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 
           <h2 className="text-3xl font-bold mt-8 mb-4">Example</h2>
           <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
-            <Card>
+            <Card className="w-full max-w-md mx-auto">
               <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card description goes here.</CardDescription>
+                <CardTitle>Get Started with Things</CardTitle>
+                <CardDescription>
+                  Enter your email below to receive updates about the Things component library
+                </CardDescription>
               </CardHeader>
-              <CardContent>
-                <p>This is the card content area.</p>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-bold">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label htmlFor="password" className="text-sm font-bold">
+                      Password
+                    </label>
+                    <Link
+                      href="#"
+                      className="text-sm text-primary hover:underline"
+                    >
+                      Forgot your password?
+                    </Link>
+                  </div>
+                  <Input
+                    id="password"
+                    type="password"
+                  />
+                </div>
+                <Button className="w-full">Login</Button>
+                <Button variant="outline" className="w-full">
+                  Login with Google
+                </Button>
               </CardContent>
+              <CardFooter className="flex flex-col">
+                <p className="text-sm text-muted-foreground">
+                  Don&apos;t have an account?{" "}
+                  <Link href="#" className="text-primary underline">
+                    Sign up
+                  </Link>
+                </p>
+              </CardFooter>
             </Card>
           </div>
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <Link href="/docs/components/button">
+          <Link href="/docs/components/date-picker">
             <Button variant="outline" size="lg">
-              ← Button
+              ← Date Picker
             </Button>
           </Link>
-          <Link href="/docs/components/input">
+          <Link href="/docs/components/carousel">
             <Button variant="outline" size="lg">
-              Input →
+              Carousel →
             </Button>
           </Link>
         </div>

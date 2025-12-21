@@ -13,12 +13,52 @@ const navigation = {
     { name: "Changelog", href: "/docs/changelog" },
   ],
   Components: [
+    { name: "Accordion", href: "/docs/components/accordion" },
+    { name: "Alert", href: "/docs/components/alert" },
+    { name: "Alert Dialog", href: "/docs/components/alert-dialog" },
+    { name: "Avatar", href: "/docs/components/avatar" },
+    { name: "Badge", href: "/docs/components/badge" },
+    { name: "Breadcrumb", href: "/docs/components/breadcrumb" },
     { name: "Button", href: "/docs/components/button" },
+    { name: "Calendar", href: "/docs/components/calendar" },
     { name: "Card", href: "/docs/components/card" },
+    { name: "Carousel", href: "/docs/components/carousel" },
+    { name: "Checkbox", href: "/docs/components/checkbox" },
+    { name: "Collapsible", href: "/docs/components/collapsible" },
+    { name: "Combobox", href: "/docs/components/combobox" },
+    { name: "Command", href: "/docs/components/command" },
+    { name: "Context Menu", href: "/docs/components/context-menu" },
+    { name: "Data Table", href: "/docs/components/data-table" },
+    { name: "Date Picker", href: "/docs/components/date-picker" },
+    { name: "Dialog", href: "/docs/components/dialog" },
+    { name: "Drawer", href: "/docs/components/drawer" },
+    { name: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
+    { name: "Form", href: "/docs/components/form" },
+    { name: "Hover Card", href: "/docs/components/hover-card" },
+    { name: "Image Card", href: "/docs/components/image-card" },
     { name: "Input", href: "/docs/components/input" },
-    { name: "Textarea", href: "/docs/components/textarea" },
-    { name: "Switch", href: "/docs/components/switch" },
+    { name: "Input OTP", href: "/docs/components/input-otp" },
+    { name: "Label", href: "/docs/components/label" },
+    { name: "Marquee", href: "/docs/components/marquee" },
+    { name: "Menubar", href: "/docs/components/menubar" },
+    { name: "Navigation Menu", href: "/docs/components/navigation-menu" },
+    { name: "Pagination", href: "/docs/components/pagination" },
+    { name: "Popover", href: "/docs/components/popover" },
+    { name: "Progress", href: "/docs/components/progress" },
+    { name: "Radio Group", href: "/docs/components/radio-group" },
+    { name: "Resizable", href: "/docs/components/resizable" },
+    { name: "Scroll Area", href: "/docs/components/scroll-area" },
+    { name: "Select", href: "/docs/components/select" },
+    { name: "Sheet", href: "/docs/components/sheet" },
+    { name: "Sidebar", href: "/docs/components/sidebar" },
+    { name: "Skeleton", href: "/docs/components/skeleton" },
     { name: "Slider", href: "/docs/components/slider" },
+    { name: "Sonner", href: "/docs/components/sonner" },
+    { name: "Switch", href: "/docs/components/switch" },
+    { name: "Table", href: "/docs/components/table" },
+    { name: "Tabs", href: "/docs/components/tabs" },
+    { name: "Textarea", href: "/docs/components/textarea" },
+    { name: "Tooltip", href: "/docs/components/tooltip" },
   ],
 }
 
@@ -42,11 +82,11 @@ export function DocsSidebar() {
       {/* Sidebar */}
       <nav
         className={cn(
-          "h-[calc(100vh-4rem)] border-r-2 border-foreground bg-background overflow-y-auto transition-all duration-300 relative",
+          "h-[calc(100vh-4rem)] border-r-2 border-foreground bg-background overflow-y-auto transition-all duration-300",
           isCollapsed
             ? "w-0 lg:w-16 opacity-0 lg:opacity-100 pointer-events-none lg:pointer-events-auto"
             : "w-64 opacity-100",
-          "fixed lg:static top-16 left-0 z-30"
+          "fixed top-16 left-0 z-30"
         )}
       >
         <div className={cn("p-6", isCollapsed && "lg:p-2")}>

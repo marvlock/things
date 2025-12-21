@@ -178,10 +178,14 @@ export { Button, buttonVariants }`}
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <div></div>
-          <Link href="/docs/components/card">
+          <Link href="/docs/components/breadcrumb">
             <Button variant="outline" size="lg">
-              Card →
+              ← Breadcrumb
+            </Button>
+          </Link>
+          <Link href="/docs/components/calendar">
+            <Button variant="outline" size="lg">
+              Calendar →
             </Button>
           </Link>
         </div>

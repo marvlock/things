@@ -11,7 +11,7 @@ export default function DocsLayout({
       <Navbar />
       <div className="flex flex-1 relative">
         <DocsSidebar />
-        <main className="flex-1 overflow-y-auto lg:ml-0">{children}</main>
+        <main className="flex-1 overflow-y-auto lg:ml-64">{children}</main>
       </div>
     </div>
   );
