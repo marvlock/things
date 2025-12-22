@@ -10,6 +10,7 @@ const navigation = {
     { name: "Introduction", href: "/docs" },
     { name: "Installation", href: "/docs/installation" },
     { name: "Resources", href: "/docs/resources" },
+    { name: "Examples", href: "/docs/examples" },
     { name: "Changelog", href: "/docs/changelog" },
   ],
   Components: [

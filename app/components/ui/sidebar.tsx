@@ -59,13 +59,16 @@ Sidebar.displayName = "Sidebar"
 const SidebarHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center border-b-2 border-foreground p-4", className)}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const { collapsed } = useSidebar()
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center border-b-2 border-foreground", collapsed ? "p-2" : "p-4", className)}
+      {...props}
+    />
+  )
+})
 SidebarHeader.displayName = "SidebarHeader"
 
 interface SidebarBrandProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -107,13 +110,16 @@ SidebarBrand.displayName = "SidebarBrand"
 type SidebarContentProps = React.HTMLAttributes<HTMLDivElement>
 
 const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("flex-1 overflow-y-auto p-4", className)}
-      {...props}
-    />
-  )
+  ({ className, ...props }, ref) => {
+    const { collapsed } = useSidebar()
+    return (
+      <div
+        ref={ref}
+        className={cn("flex-1 overflow-y-auto", collapsed ? "p-2" : "p-4", className)}
+        {...props}
+      />
+    )
+  }
 )
 SidebarContent.displayName = "SidebarContent"
 
@@ -274,13 +280,16 @@ SidebarMenuSeparator.displayName = "SidebarMenuSeparator"
 const SidebarFooter = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("border-t-2 border-foreground p-4", className)}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const { collapsed } = useSidebar()
+  return (
+    <div
+      ref={ref}
+      className={cn("border-t-2 border-foreground", collapsed ? "p-2" : "p-4", className)}
+      {...props}
+    />
+  )
+})
 SidebarFooter.displayName = "SidebarFooter"
 
 const SidebarTrigger = React.forwardRef<

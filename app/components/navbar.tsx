@@ -35,10 +35,16 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <Link
-            href="/docs/components/button"
+            href="/docs/components/accordion"
             className="text-sm font-bold hover:text-primary transition-colors"
           >
             Components
+          </Link>
+          <Link
+            href="/docs/examples"
+            className="text-sm font-bold hover:text-primary transition-colors"
+          >
+            Examples
           </Link>
           <Link
             href="/docs"
@@ -81,11 +87,18 @@ export function Navbar() {
         <div className="md:hidden border-t-2 border-foreground bg-background">
           <div className="container mx-auto px-4 py-4 space-y-4">
             <Link
-              href="/docs/components/button"
+              href="/docs/components/accordion"
               className="block text-sm font-bold hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Components
+            </Link>
+            <Link
+              href="/docs/examples"
+              className="block text-sm font-bold hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Examples
             </Link>
             <Link
               href="/docs"

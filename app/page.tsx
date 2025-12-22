@@ -36,7 +36,7 @@ export default function Home() {
             </p>
             
             <div className="flex items-center justify-center">
-              <Link href="/docs/components/button">
+              <Link href="/docs/components/accordion">
                 <Button size="lg" variant="outline" className="text-lg px-8 py-6 font-bold">
                   View Components
                 </Button>
