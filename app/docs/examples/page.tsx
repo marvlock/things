@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
 
 export default function ExamplesPage() {
   return (

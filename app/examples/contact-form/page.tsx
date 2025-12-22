@@ -164,7 +164,7 @@ export default function ContactFormExamplePage() {
             <div className="mb-8 text-center">
               <h1 className="mb-4 text-5xl font-bold md:text-6xl">Contact Us</h1>
               <p className="text-xl text-muted-foreground">
-                Get in touch with us. We'd love to hear from you!
+                Get in touch with us. We&apos;d love to hear from you!
               </p>
             </div>
 
@@ -175,7 +175,7 @@ export default function ContactFormExamplePage() {
                   ✓ Message Sent!
                 </AlertTitle>
                 <AlertDescription className="text-green-800 dark:text-green-200">
-                  Thank you for contacting us. We'll get back to you soon.
+                  Thank you for contacting us. We&apos;ll get back to you soon.
                 </AlertDescription>
               </Alert>
             )}
@@ -197,7 +197,7 @@ export default function ContactFormExamplePage() {
               <CardHeader>
                 <CardTitle className="text-3xl">Send us a message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and we'll respond as soon as possible.
+                  Fill out the form below and we&apos;ll respond as soon as possible.
                 </CardDescription>
               </CardHeader>
               <CardContent>

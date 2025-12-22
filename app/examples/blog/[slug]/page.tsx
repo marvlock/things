@@ -141,12 +141,13 @@ const blogPosts: Record<string, {
   },
 }
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = blogPosts[params.slug]
+  const { slug } = await params
+  const post = blogPosts[slug]
 
   if (!post) {
     return (
@@ -216,7 +217,6 @@ export default function BlogPostPage({
             if (paragraph.startsWith("```")) {
               const codeMatch = paragraph.match(/```(\w+)?\n([\s\S]*?)```/)
               if (codeMatch) {
-                const language = codeMatch[1] || ""
                 const code = codeMatch[2]
                 return (
                   <div
