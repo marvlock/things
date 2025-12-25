@@ -19,6 +19,8 @@ export default function ChangelogPage() {
                 <li>Added Blog Website example</li>
                 <li>Added Contact Form example</li>
                 <li>Added Admin Panel example</li>
+                <li>Added search bar</li>
+                <li>Updated logo</li>
               </ul>
             </div>
             <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
