@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Calendar } from "@/app/components/ui/calendar"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function CalendarDocsPage() {
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
@@ -27,15 +27,9 @@ export default function CalendarDocsPage() {
             No UI library dependencies.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/calendar.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="calendar"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -229,16 +223,7 @@ export function Calendar({ value, defaultValue, onValueChange, className }: Cale
     </div>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/calendar.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -425,18 +410,7 @@ export function Calendar({ value, defaultValue, onValueChange, className }) {
     </div>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Calendar } from "@/components/ui/calendar"
+            usageTs={`import { Calendar } from "@/components/ui/calendar"
 
 function MyComponent() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
@@ -448,14 +422,7 @@ function MyComponent() {
     />
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Calendar } from "@/components/ui/calendar"
+            usageJs={`import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react"
 
 function MyComponent() {
@@ -468,10 +435,8 @@ function MyComponent() {
     />
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

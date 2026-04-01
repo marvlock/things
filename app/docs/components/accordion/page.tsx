@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/app/components/ui/accordion"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function AccordionDocsPage() {
   return (
@@ -24,15 +24,9 @@ export default function AccordionDocsPage() {
             multiple open items. Built from scratch using React and native HTML elements. No UI library dependencies.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/accordion.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="accordion"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -207,16 +201,7 @@ const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>
 AccordionContent.displayName = "AccordionContent"
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/accordion.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -368,18 +353,7 @@ const AccordionContent = React.forwardRef(
 AccordionContent.displayName = "AccordionContent"
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageTs={`import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -394,14 +368,7 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }`}
     </AccordionContent>
   </AccordionItem>
 </Accordion>`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageJs={`import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -420,10 +387,8 @@ function MyComponent() {
     </Accordion>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

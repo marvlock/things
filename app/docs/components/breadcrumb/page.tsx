@@ -9,7 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/app/components/ui/breadcrumb"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function BreadcrumbDocsPage() {
   return (
@@ -27,15 +27,9 @@ export default function BreadcrumbDocsPage() {
             Built from scratch using React and native HTML elements. No UI library dependencies.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/breadcrumb.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="breadcrumb"
+            tsCode={`import * as React from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
@@ -171,16 +165,7 @@ export {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/breadcrumb.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
@@ -305,18 +290,7 @@ export {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageTs={`import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -340,14 +314,7 @@ export {
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageJs={`import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -375,10 +342,8 @@ function MyComponent() {
     </Breadcrumb>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

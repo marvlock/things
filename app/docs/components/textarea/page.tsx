@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Textarea } from "@/app/components/ui/textarea"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function TextareaDocsPage() {
   return (
@@ -19,15 +19,9 @@ export default function TextareaDocsPage() {
             HTML textarea elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/textarea.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="textarea"
+            tsCode={`import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -50,16 +44,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = "Textarea"
 
 export { Textarea }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/textarea.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -80,38 +65,18 @@ const Textarea = React.forwardRef(
 Textarea.displayName = "Textarea"
 
 export { Textarea }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Textarea } from "@/components/ui/textarea"
+            usageTs={`import { Textarea } from "@/components/ui/textarea"
 
 <Textarea placeholder="Enter your message" />
 <Textarea rows={5} placeholder="Longer text area" />
 <Textarea disabled placeholder="Disabled textarea" />`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Textarea } from "@/components/ui/textarea"
+            usageJs={`import { Textarea } from "@/components/ui/textarea"
 
 <Textarea placeholder="Enter your message" />
 <Textarea rows={5} placeholder="Longer text area" />
 <Textarea disabled placeholder="Disabled textarea" />`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

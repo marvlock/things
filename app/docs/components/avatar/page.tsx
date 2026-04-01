@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Avatar } from "@/app/components/ui/avatar"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function AvatarDocsPage() {
   return (
@@ -20,15 +20,9 @@ export default function AvatarDocsPage() {
             using React and native HTML img elements. No UI library dependencies.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/avatar.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="avatar"
+            tsCode={`import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -88,16 +82,7 @@ const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
 Avatar.displayName = "Avatar"
 
 export { Avatar, avatarVariants }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/avatar.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -151,38 +136,18 @@ const Avatar = React.forwardRef(
 Avatar.displayName = "Avatar"
 
 export { Avatar, avatarVariants }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Avatar } from "@/components/ui/avatar"
+            usageTs={`import { Avatar } from "@/components/ui/avatar"
 
 <Avatar src="/user.jpg" alt="User" />
 <Avatar src="/user.jpg" alt="User" size="lg" />
 <Avatar fallback="JD" size="sm" />`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Avatar } from "@/components/ui/avatar"
+            usageJs={`import { Avatar } from "@/components/ui/avatar"
 
 <Avatar src="/user.jpg" alt="User" />
 <Avatar src="/user.jpg" alt="User" size="lg" />
 <Avatar fallback="JD" size="sm" />`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

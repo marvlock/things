@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Toaster, useToast } from "@/app/components/ui/sonner"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 function ToastExamples() {
@@ -164,15 +164,9 @@ export default function SonnerDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/sonner.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="sonner"
+            tsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -388,16 +382,7 @@ const ToastItem = ({ toast, onDismiss }: ToastItemProps) => {
 }
 
 export { Toaster, useToast }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/sonner.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -578,18 +563,7 @@ const ToastItem = ({ toast, onDismiss }) => {
 }
 
 export { Toaster, useToast }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Toaster, useToast } from "@/components/ui/sonner"
+            usageTs={`import { Toaster, useToast } from "@/components/ui/sonner"
 
 function MyComponent() {
   return (
@@ -615,14 +589,7 @@ function ToastButton() {
     </button>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Toaster, useToast } from "@/components/ui/sonner"
+            usageJs={`import { Toaster, useToast } from "@/components/ui/sonner"
 
 function MyComponent() {
   return (
@@ -648,10 +615,8 @@ function ToastButton() {
     </button>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

@@ -7,7 +7,7 @@ import {
   ImageCardImage,
   ImageCardCaption,
 } from "@/app/components/ui/image-card"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 export default function ImageCardDocsPage() {
@@ -26,15 +26,9 @@ export default function ImageCardDocsPage() {
             and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/image-card.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="image-card"
+            tsCode={`import * as React from "react"
 import { cn } from "@/lib/utils"
 
 interface ImageCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -138,16 +132,7 @@ export {
   ImageCardImage,
   ImageCardCaption,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/image-card.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const ImageCard = React.forwardRef(
@@ -238,18 +223,7 @@ export {
   ImageCardImage,
   ImageCardCaption,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { ImageCard } from "@/components/ui/image-card"
+            usageTs={`import { ImageCard } from "@/components/ui/image-card"
 
 function MyComponent() {
   return (
@@ -260,14 +234,7 @@ function MyComponent() {
     />
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { ImageCard } from "@/components/ui/image-card"
+            usageJs={`import { ImageCard } from "@/components/ui/image-card"
 
 function MyComponent() {
   return (
@@ -278,10 +245,8 @@ function MyComponent() {
     />
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

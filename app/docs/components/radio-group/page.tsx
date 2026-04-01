@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/app/components/ui/radio-group"
 import { Label } from "@/app/components/ui/label"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 export default function RadioGroupDocsPage() {
@@ -25,15 +25,9 @@ export default function RadioGroupDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/radio-group.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="radio-group"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -147,16 +141,7 @@ export {
   RadioGroup,
   RadioGroupItem,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/radio-group.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -252,18 +237,7 @@ export {
   RadioGroup,
   RadioGroupItem,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+            usageTs={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import * as React from "react"
 
@@ -283,14 +257,7 @@ function MyComponent() {
     </RadioGroup>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+            usageJs={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import * as React from "react"
 
@@ -310,10 +277,8 @@ function MyComponent() {
     </RadioGroup>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

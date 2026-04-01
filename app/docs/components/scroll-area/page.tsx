@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { ScrollArea } from "@/app/components/ui/scroll-area"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function ScrollAreaDocsPage() {
   return (
@@ -21,15 +21,9 @@ export default function ScrollAreaDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/scroll-area.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="scroll-area"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -112,16 +106,7 @@ const ScrollBar = React.forwardRef<HTMLDivElement, ScrollBarProps>(
 ScrollBar.displayName = "ScrollBar"
 
 export { ScrollArea, ScrollBar }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/scroll-area.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -196,16 +181,7 @@ const ScrollBar = React.forwardRef(
 ScrollBar.displayName = "ScrollBar"
 
 export { ScrollArea, ScrollBar }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <p className="text-sm text-muted-foreground">
-            Also add this CSS to your <code className="bg-muted px-1 py-0.5 rounded">globals.css</code>:
-          </p>
-          <CodeBlock
-            code={`.scrollbar-hide {
+            usageTs={`.scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -233,14 +209,7 @@ function MyComponent() {
     </ScrollArea>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { ScrollArea } from "@/components/ui/scroll-area"
+            usageJs={`import { ScrollArea } from "@/components/ui/scroll-area"
 
 function MyComponent() {
   return (
@@ -251,10 +220,8 @@ function MyComponent() {
     </ScrollArea>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

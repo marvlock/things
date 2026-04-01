@@ -5,7 +5,7 @@ import { Button } from "@/app/components/ui/button"
 import {
   Pagination,
 } from "@/app/components/ui/pagination"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 export default function PaginationDocsPage() {
@@ -26,15 +26,9 @@ export default function PaginationDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/pagination.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="pagination"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -242,16 +236,7 @@ export {
   PaginationNext,
   PaginationEllipsis,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/pagination.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -441,35 +426,8 @@ export {
   PaginationNext,
   PaginationEllipsis,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Pagination } from "@/components/ui/pagination"
-import * as React from "react"
-
-function MyComponent() {
-  const [currentPage, setCurrentPage] = React.useState(1)
-
-  return (
-    <Pagination
-      currentPage={currentPage}
-      totalPages={10}
-      onPageChange={setCurrentPage}
-    />
-  )
-}`}
-                language="tsx"
-              />
-            </div>
-          </div>
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

@@ -64,16 +64,21 @@ const ScrollBar = React.forwardRef<HTMLDivElement, ScrollBarProps>(
       <div
         ref={ref}
         className={cn(
-          "absolute right-0 top-0 z-10 flex touch-none select-none transition-colors",
+          "absolute right-0 top-0 z-10 flex touch-none select-none transition-all",
           orientation === "vertical" &&
-            "h-full w-2.5 border-l-2 border-foreground p-[1px]",
+            "h-full w-[18px] border-l-2 border-foreground bg-background [background-image:radial-gradient(circle,hsl(var(--foreground)/0.1)_1.5px,transparent_1.5px)] [background-size:8px_8px]",
           orientation === "horizontal" &&
-            "bottom-0 left-0 h-2.5 w-full flex-col border-t-2 border-foreground p-[1px]",
+            "bottom-0 left-0 h-[18px] w-full flex-col border-t-2 border-foreground bg-background [background-image:radial-gradient(circle,hsl(var(--foreground)/0.1)_1.5px,transparent_1.5px)] [background-size:8px_8px]",
           className
         )}
         {...props}
       >
-        <div className="relative flex-1 rounded-full bg-foreground/30" />
+        <div className={cn(
+          "relative flex-1 bg-primary border-2 border-foreground transition-all duration-75",
+          "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-foreground hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px]",
+          "[background-image:linear-gradient(transparent_0,transparent_40%,hsl(var(--background)/0.3)_40%,hsl(var(--background)/0.3)_42%,transparent_42%,transparent_48%,hsl(var(--background)/0.3)_48%,hsl(var(--background)/0.3)_50%,transparent_50%,transparent_56%,hsl(var(--background)/0.3)_56%,hsl(var(--background)/0.3)_58%,transparent_58%)]",
+          orientation === "vertical" ? "mx-[2px] my-[4px]" : "mx-[4px] my-[2px]"
+        )} />
       </div>
     )
   }

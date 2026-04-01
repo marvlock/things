@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function CardDocsPage() {
   return (
@@ -20,15 +20,9 @@ export default function CardDocsPage() {
             Built from scratch using React and native HTML div elements. Completely independent.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/card.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="card"
+            tsCode={`import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -107,16 +101,7 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/card.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -177,18 +162,7 @@ const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+            usageTs={`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 <Card>
   <CardHeader>
@@ -196,14 +170,7 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
   </CardHeader>
   <CardContent>Content</CardContent>
 </Card>`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+            usageJs={`import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 <Card>
   <CardHeader>
@@ -211,10 +178,8 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
   </CardHeader>
   <CardContent>Content</CardContent>
 </Card>`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

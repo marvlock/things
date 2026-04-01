@@ -7,7 +7,7 @@ import {
   ResizablePanel,
   ResizableHandle,
 } from "@/app/components/ui/resizable"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function ResizableDocsPage() {
   return (
@@ -25,15 +25,9 @@ export default function ResizableDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/resizable.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="resizable"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -296,16 +290,7 @@ export {
   ResizablePanel,
   ResizableHandle,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/resizable.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -542,54 +527,8 @@ export {
   ResizablePanel,
   ResizableHandle,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
-  ResizablePanelGroup,
-  ResizablePanel,
-  ResizableHandle,
-} from "@/components/ui/resizable"
-
-function MyComponent() {
-  return (
-    <ResizablePanelGroup direction="horizontal" className="h-[200px]">
-      <ResizablePanel defaultSize={50}>
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold">One</span>
-        </div>
-      </ResizablePanel>
-      <ResizableHandle />
-      <ResizablePanel defaultSize={50}>
-        <ResizablePanelGroup direction="vertical">
-          <ResizablePanel defaultSize={50}>
-            <div className="flex h-full items-center justify-center p-6">
-              <span className="font-semibold">Two</span>
-            </div>
-          </ResizablePanel>
-          <ResizableHandle />
-          <ResizablePanel defaultSize={50}>
-            <div className="flex h-full items-center justify-center p-6">
-              <span className="font-semibold">Three</span>
-            </div>
-          </ResizablePanel>
-        </ResizablePanelGroup>
-      </ResizablePanel>
-    </ResizablePanelGroup>
-  )
-}`}
-                language="tsx"
-              />
-            </div>
-          </div>
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

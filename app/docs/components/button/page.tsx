@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function ButtonDocsPage() {
   return (
@@ -18,15 +18,9 @@ export default function ButtonDocsPage() {
             button elements. No UI library dependencies.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/button.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="button"
+            tsCode={`import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -75,16 +69,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/button.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -129,38 +114,18 @@ const Button = React.forwardRef(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Button } from "@/components/ui/button"
+            usageTs={`import { Button } from "@/components/ui/button"
 
 <Button>Click me</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="destructive">Delete</Button>`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Button } from "@/components/ui/button"
+            usageJs={`import { Button } from "@/components/ui/button"
 
 <Button>Click me</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="destructive">Delete</Button>`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.
@@ -193,4 +158,3 @@ export { Button, buttonVariants }`}
     </div>
   )
 }
-

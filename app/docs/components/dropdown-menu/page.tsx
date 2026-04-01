@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
 } from "@/app/components/ui/dropdown-menu"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 export default function DropdownMenuDocsPage() {
@@ -30,15 +30,9 @@ export default function DropdownMenuDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/dropdown-menu.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="dropdown-menu"
+            tsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -313,16 +307,7 @@ export {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/dropdown-menu.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -567,18 +552,7 @@ export {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageTs={`import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -616,14 +590,7 @@ function MyComponent() {
     </DropdownMenu>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageJs={`import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
@@ -661,10 +628,8 @@ function MyComponent() {
     </DropdownMenu>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function, and the required

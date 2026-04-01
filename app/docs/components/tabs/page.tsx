@@ -5,7 +5,7 @@ import { Button } from "@/app/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
 import { Input } from "@/app/components/ui/input"
 import { Label } from "@/app/components/ui/label"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function TabsDocsPage() {
   return (
@@ -24,15 +24,9 @@ export default function TabsDocsPage() {
             No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/tabs.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="tabs"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -162,16 +156,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
 TabsContent.displayName = "TabsContent"
 
 export { Tabs, TabsList, TabsTrigger, TabsContent }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/tabs.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -279,18 +264,7 @@ const TabsContent = React.forwardRef(
 TabsContent.displayName = "TabsContent"
 
 export { Tabs, TabsList, TabsTrigger, TabsContent }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+            usageTs={`import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 function MyComponent() {
   return (
@@ -314,14 +288,7 @@ function MyComponent() {
     </Tabs>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+            usageJs={`import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 function MyComponent() {
   return (
@@ -345,10 +312,8 @@ function MyComponent() {
     </Tabs>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

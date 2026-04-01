@@ -9,7 +9,7 @@ import {
   ComboboxInput,
   ComboboxList,
 } from "@/app/components/ui/combobox"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 const frameworks = [
   { value: "nextjs", label: "Next.js" },
@@ -35,15 +35,9 @@ export default function ComboboxDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/combobox.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="combobox"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -339,16 +333,7 @@ const ComboboxList = React.forwardRef<HTMLDivElement, ComboboxListProps>(
 ComboboxList.displayName = "ComboboxList"
 
 export { Combobox, ComboboxTrigger, ComboboxContent, ComboboxInput, ComboboxList }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/combobox.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -609,18 +594,7 @@ const ComboboxList = React.forwardRef(
 ComboboxList.displayName = "ComboboxList"
 
 export { Combobox, ComboboxTrigger, ComboboxContent, ComboboxInput, ComboboxList }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageTs={`import {
   Combobox,
   ComboboxTrigger,
   ComboboxContent,
@@ -647,14 +621,7 @@ function MyComponent() {
     </Combobox>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageJs={`import {
   Combobox,
   ComboboxTrigger,
   ComboboxContent,
@@ -681,10 +648,8 @@ function MyComponent() {
     </Combobox>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function, and the 

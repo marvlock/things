@@ -8,7 +8,7 @@ import {
   CommandInput,
   CommandList,
 } from "@/app/components/ui/command"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 const commandItems = [
@@ -38,15 +38,9 @@ export default function CommandDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/command.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="command"
+            tsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -342,16 +336,7 @@ const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
 CommandList.displayName = "CommandList"
 
 export { Command, CommandDialog, CommandInput, CommandList }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/command.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -612,18 +597,7 @@ const CommandList = React.forwardRef(
 CommandList.displayName = "CommandList"
 
 export { Command, CommandDialog, CommandInput, CommandList }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageTs={`import {
   Command,
   CommandDialog,
   CommandInput,
@@ -648,14 +622,7 @@ function MyComponent() {
     </Command>
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import {
+            usageJs={`import {
   Command,
   CommandDialog,
   CommandInput,
@@ -680,10 +647,8 @@ function MyComponent() {
     </Command>
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Press <kbd className="px-2 py-1 bg-muted border-2 border-foreground rounded font-bold text-xs">⌘</kbd> + <kbd className="px-2 py-1 bg-muted border-2 border-foreground rounded font-bold text-xs">J</kbd> to open the command menu.
           </p>

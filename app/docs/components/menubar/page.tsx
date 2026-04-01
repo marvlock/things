@@ -11,7 +11,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
 } from "@/app/components/ui/menubar"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function MenubarDocsPage() {
   return (
@@ -29,15 +29,9 @@ export default function MenubarDocsPage() {
             Built from scratch using React and native HTML elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/menubar.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="menubar"
+            tsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -313,16 +307,7 @@ export {
   MenubarSeparator,
   MenubarShortcut,
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/menubar.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import * as ReactDOM from "react-dom"
@@ -562,52 +547,8 @@ export {
   MenubarSeparator,
   MenubarShortcut,
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-  MenubarContent,
-  MenubarItem,
-  MenubarShortcut,
-  MenubarSeparator,
-} from "@/components/ui/menubar"
-
-function MyComponent() {
-  return (
-    <Menubar>
-      <MenubarMenu value="file">
-        <MenubarTrigger value="file">File</MenubarTrigger>
-        <MenubarContent value="file">
-          <MenubarItem>
-            New Tab
-            <MenubarShortcut shortcut="Mod+T" />
-          </MenubarItem>
-          <MenubarItem>
-            New Window
-            <MenubarShortcut shortcut="Mod+N" />
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem disabled>New Incognito Window</MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
-  )
-}`}
-                language="tsx"
-              />
-            </div>
-          </div>
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

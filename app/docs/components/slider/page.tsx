@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Slider } from "@/app/components/ui/slider"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 import * as React from "react"
 
 export default function SliderDocsPage() {
@@ -25,15 +25,9 @@ export default function SliderDocsPage() {
             using React and native HTML input elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/slider.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+          <ComponentCode 
+            filename="slider"
+            tsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -103,16 +97,7 @@ const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
 Slider.displayName = "Slider"
 
 export { Slider }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/slider.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`"use client"
+            jsCode={`"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -175,18 +160,7 @@ const Slider = React.forwardRef(
 Slider.displayName = "Slider"
 
 export { Slider }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Slider } from "@/components/ui/slider"
+            usageTs={`import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
 
 function MyComponent() {
@@ -202,14 +176,7 @@ function MyComponent() {
     />
   )
 }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Slider } from "@/components/ui/slider"
+            usageJs={`import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
 
 function MyComponent() {
@@ -225,10 +192,8 @@ function MyComponent() {
     />
   )
 }`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

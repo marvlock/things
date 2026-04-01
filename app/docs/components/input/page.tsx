@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
-import { CodeBlock } from "@/app/components/code-block"
+import { ComponentCode } from "@/app/components/component-code"
 
 export default function InputDocsPage() {
   return (
@@ -19,15 +19,9 @@ export default function InputDocsPage() {
             HTML input elements. No dependencies on any UI library.
           </p>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Code</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2">
-                <strong>TypeScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/input.tsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+          <ComponentCode 
+            filename="input"
+            tsCode={`import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -51,16 +45,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = "Input"
 
 export { Input }`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2">
-                <strong>JavaScript:</strong> Copy this code into <code className="bg-muted px-1 py-0.5 rounded">components/ui/input.jsx</code>:
-              </p>
-              <CodeBlock
-                code={`import * as React from "react"
+            jsCode={`import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -82,38 +67,18 @@ const Input = React.forwardRef(
 Input.displayName = "Input"
 
 export { Input }`}
-                language="jsx"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Input } from "@/components/ui/input"
+            usageTs={`import { Input } from "@/components/ui/input"
 
 <Input type="text" placeholder="Enter text" />
 <Input type="email" placeholder="Email" />
 <Input type="password" placeholder="Password" />`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { Input } from "@/components/ui/input"
+            usageJs={`import { Input } from "@/components/ui/input"
 
 <Input type="text" placeholder="Enter text" />
 <Input type="email" placeholder="Email" />
 <Input type="password" placeholder="Password" />`}
-                language="jsx"
-              />
-            </div>
-          </div>
+          />
+
           <p className="text-sm text-muted-foreground">
             Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file 
             with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.

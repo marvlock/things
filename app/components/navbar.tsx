@@ -187,26 +187,26 @@ export function Navbar() {
               <rect x="10" y="10" width="12" height="12" fill="currentColor"/>
             </svg>
           </div>
-          <span className="text-xl font-bold">Things</span>
+          <span className="text-xl font-bold hover:underline underline-offset-4 decoration-2">Things</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <Link
             href="/docs/components/accordion"
-            className="text-sm font-bold hover:text-primary transition-colors"
+            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
           >
             Components
           </Link>
           <Link
             href="/docs/examples"
-            className="text-sm font-bold hover:text-primary transition-colors"
+            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
           >
             Examples
           </Link>
           <Link
             href="/docs"
-            className="text-sm font-bold hover:text-primary transition-colors"
+            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
           >
             Docs
           </Link>
@@ -233,8 +233,9 @@ export function Navbar() {
               />
             </svg>
             <span className="flex-1 text-left">Search components...</span>
-            <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border-2 border-foreground bg-muted px-1.5 font-mono text-[10px] font-bold sm:flex">
-              <span className="text-xs">⌘</span>K
+            <kbd className="pointer-events-none hidden h-5 min-w-[40px] select-none items-center justify-center gap-1 rounded border-2 border-foreground bg-muted font-mono text-[10px] font-bold sm:flex leading-none">
+              <span>⌘</span>
+              <span>K</span>
             </kbd>
           </button>
           <Link
@@ -286,21 +287,21 @@ export function Navbar() {
             </button>
             <Link
               href="/docs/components/accordion"
-              className="block text-sm font-bold hover:text-primary transition-colors"
+              className="block text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Components
             </Link>
             <Link
               href="/docs/examples"
-              className="block text-sm font-bold hover:text-primary transition-colors"
+              className="block text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Examples
             </Link>
             <Link
               href="/docs"
-              className="block text-sm font-bold hover:text-primary transition-colors"
+              className="block text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Docs
