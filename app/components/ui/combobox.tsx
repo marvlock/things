@@ -166,7 +166,7 @@ const ComboboxTrigger = React.forwardRef<HTMLButtonElement, ComboboxTriggerProps
         type="button"
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex w-full items-center justify-between h-10 rounded-md border-2 border-foreground bg-background text-foreground px-3 py-2 text-sm font-bold transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 neobrutalism-shadow",
+          "flex w-full items-center justify-between h-10 rounded-lg border-2 border-foreground bg-background text-foreground px-3 py-2 text-sm font-bold transition-all hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 neobrutalism-shadow-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none",
           className
         )}
         {...props}
@@ -227,7 +227,7 @@ const ComboboxInput = React.forwardRef<HTMLInputElement, ComboboxInputProps>(
     const { searchValue, setSearchValue, setOpen, searchPlaceholder } = useCombobox()
 
     return (
-      <div className="p-2 border-b-2 border-foreground">
+      <div className="flex items-center border-b-2 border-foreground">
         <Input
           ref={ref}
           value={searchValue}
@@ -236,7 +236,10 @@ const ComboboxInput = React.forwardRef<HTMLInputElement, ComboboxInputProps>(
             setOpen(true)
           }}
           placeholder={placeholder || searchPlaceholder}
-          className={className}
+          className={cn(
+            "flex h-12 w-full rounded-none border-0 bg-transparent px-4 py-3 text-sm outline-none focus-visible:ring-0 neobrutalism-shadow-none",
+            className
+          )}
           {...props}
         />
       </div>

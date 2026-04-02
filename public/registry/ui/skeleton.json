@@ -1,0 +1,17 @@
+{
+  "name": "skeleton",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/skeleton.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ntype SkeletonProps = React.HTMLAttributes<HTMLDivElement>\n\nconst Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"animate-pulse rounded-md border-2 border-foreground bg-muted\",\n          className\n        )}\n        {...props}\n      />\n    )\n  }\n)\nSkeleton.displayName = \"Skeleton\"\n\nexport { Skeleton }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/skeleton.tsx"
+    }
+  ]
+}

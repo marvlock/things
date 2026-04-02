@@ -14,7 +14,7 @@ export default function HoverCardDocsPage() {
   return (
     <div className="min-h-screen bg-background py-8 md:py-12 pr-8 md:pr-12">
       <div className="mx-auto max-w-3xl pl-8 md:pl-12">
-        <h1 className="mb-4 text-5xl font-bold">Hover Card</h1>
+        <h1 className="mb-4 text-5xl font-bold uppercase tracking-tighter">Hover Card</h1>
         <p className="mb-8 text-xl text-muted-foreground">
           For sighted users to preview content available behind a link.
         </p>
@@ -406,11 +406,7 @@ export {
   HoverCardTrigger,
   HoverCardContent,
 }`}
-            usageTs={`import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-} from "@/components/ui/hover-card"
+            usageTs={`import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card"
 
 function MyComponent() {
   return (
@@ -429,11 +425,7 @@ function MyComponent() {
     </HoverCard>
   )
 }`}
-            usageJs={`import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-} from "@/components/ui/hover-card"
+            usageJs={`import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card"
 
 function MyComponent() {
   return (
@@ -454,86 +446,30 @@ function MyComponent() {
 }`}
           />
 
-          <p className="text-sm text-muted-foreground">
-            Created and maintained by @vercel.
-          </p>
-        </div>
-      </HoverCardContent>
-    </HoverCard>
-  )
-}`}
-                language="tsx"
-              />
-            </div>
-
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-} from "@/components/ui/hover-card"
-
-function MyComponent() {
-  return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <a href="https://nextjs.org">Next.js</a>
-      </HoverCardTrigger>
-      <HoverCardContent>
-        <div className="space-y-1">
-          <h4 className="text-sm font-bold">The React Framework</h4>
-          <p className="text-sm text-muted-foreground">
-            Created and maintained by @vercel.
-          </p>
-        </div>
-      </HoverCardContent>
-    </HoverCard>
-  )
-}`}
-                language="jsx"
-              />
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
-            with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.
-          </p>
-
           <h2 className="text-3xl font-bold mt-8 mb-4">Examples</h2>
           <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow space-y-6">
             <div>
               <h3 className="text-xl font-bold mb-4">Default</h3>
-              <HoverCard openDelay={0} closeDelay={0}>
-                <HoverCardTrigger asChild>
-                  <Button variant="outline">Hover</Button>
-                </HoverCardTrigger>
-                <HoverCardContent>
-                  <div className="space-y-1">
-                    <h4 className="text-sm font-bold">The React Framework</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Created and maintained by @vercel.
-                    </p>
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-bold mb-4">With Link</h3>
               <HoverCard>
                 <HoverCardTrigger asChild>
-                  <a href="https://nextjs.org" className="text-primary underline font-bold">
-                    Next.js
-                  </a>
+                  <Button variant="outline" className="font-bold border-2 border-black neobrutalism-shadow-sm">Hover Me</Button>
                 </HoverCardTrigger>
-                <HoverCardContent>
-                  <div className="space-y-1">
-                    <h4 className="text-sm font-bold">The React Framework</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Created and maintained by @vercel.
-                    </p>
+                <HoverCardContent className="w-80">
+                  <div className="flex justify-between space-x-4">
+                    <div className="h-12 w-12 rounded-full border-2 border-black bg-primary flex items-center justify-center font-black text-primary-foreground">
+                      NX
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-bold tracking-tight">@nextjs</h4>
+                      <p className="text-sm leading-snug">
+                        The React Framework – created and maintained by @vercel.
+                      </p>
+                      <div className="flex items-center pt-2">
+                        <span className="text-xs text-muted-foreground font-medium">
+                          Joined December 2021
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </HoverCardContent>
               </HoverCard>
@@ -557,4 +493,3 @@ function MyComponent() {
     </div>
   )
 }
-

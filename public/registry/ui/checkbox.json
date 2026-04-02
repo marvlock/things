@@ -1,0 +1,17 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/checkbox.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, \"type\">\n\nconst Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(\n  ({ className, checked, onChange, disabled, ...props }, ref) => {\n    const [isChecked, setIsChecked] = React.useState(checked ?? false)\n\n    React.useEffect(() => {\n      if (checked !== undefined) {\n        setIsChecked(checked)\n      }\n    }, [checked])\n\n    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n      if (disabled) return\n      setIsChecked(e.target.checked)\n      onChange?.(e)\n    }\n\n    return (\n      <label\n        className={cn(\n          \"relative inline-flex h-5 w-5 items-center justify-center cursor-pointer\",\n          disabled && \"opacity-50 cursor-not-allowed\",\n          className\n        )}\n      >\n        <input\n          type=\"checkbox\"\n          className=\"sr-only\"\n          checked={isChecked}\n          onChange={handleChange}\n          disabled={disabled}\n          ref={ref}\n          {...props}\n        />\n        <span\n          className={cn(\n            \"flex h-5 w-5 items-center justify-center rounded-sm border-2 border-foreground bg-background transition-colors neobrutalism-shadow-sm\",\n            isChecked && \"bg-primary border-primary\",\n            disabled && \"cursor-not-allowed\"\n          )}\n        >\n          {isChecked && (\n            <svg\n              className=\"h-3 w-3 text-primary-foreground\"\n              fill=\"none\"\n              stroke=\"currentColor\"\n              viewBox=\"0 0 24 24\"\n              strokeWidth={3}\n            >\n              <path\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n                d=\"M5 13l4 4L19 7\"\n              />\n            </svg>\n          )}\n        </span>\n      </label>\n    )\n  }\n)\nCheckbox.displayName = \"Checkbox\"\n\nexport { Checkbox }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/checkbox.tsx"
+    }
+  ]
+}

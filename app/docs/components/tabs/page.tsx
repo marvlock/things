@@ -314,11 +314,6 @@ function MyComponent() {
 }`}
           />
 
-          <p className="text-sm text-muted-foreground">
-            Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
-            with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.
-          </p>
-
           <h2 className="text-3xl font-bold mt-8 mb-4">Examples</h2>
           <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow space-y-6">
             <div>

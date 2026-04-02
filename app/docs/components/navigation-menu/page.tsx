@@ -441,40 +441,6 @@ export {
 }`}
           />
 
-          <p className="text-sm text-muted-foreground">
-                  Beautifully designed components built from scratch.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-bold mb-1">Introduction</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Re-usable components built using React and Tailwind CSS.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold mb-1">Installation</h4>
-                  <p className="text-sm text-muted-foreground">
-                    How to install dependencies and structure your app.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  )
-}`}
-                language="tsx"
-              />
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
-            with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.
-          </p>
-
           <h2 className="text-3xl font-bold mt-8 mb-4">Examples</h2>
           <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow space-y-6">
             <div>

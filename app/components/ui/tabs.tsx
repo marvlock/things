@@ -86,7 +86,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
         className={cn(
           "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
           isActive
-            ? "bg-primary text-primary-foreground border-2 border-foreground neobrutalism-shadow-sm"
+            ? "bg-foreground text-background"
             : "text-muted-foreground hover:bg-background hover:text-foreground",
           className
         )}

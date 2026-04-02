@@ -174,50 +174,50 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-md border-2 border-foreground bg-background neobrutalism-shadow-sm">
+        <div className="flex-1 flex items-center">
+          <Link href="/" className="flex items-center space-x-2">
             <svg
-              className="h-6 w-6"
+              className="h-8 w-8"
               viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="32" height="32" fill="currentColor" stroke="currentColor" strokeWidth="2"/>
-              <rect x="6" y="6" width="20" height="20" fill="hsl(var(--background))" stroke="currentColor" strokeWidth="2"/>
+              <rect width="32" height="32" fill="currentColor" />
+              <rect x="6" y="6" width="20" height="20" fill="hsl(var(--background))" />
               <rect x="10" y="10" width="12" height="12" fill="currentColor"/>
             </svg>
-          </div>
-          <span className="text-xl font-bold hover:underline underline-offset-4 decoration-2">Things</span>
-        </Link>
+            <span className="text-xl font-bold transition-all">Things</span>
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex flex-1 items-center justify-center space-x-8">
           <Link
             href="/docs/components/accordion"
-            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
+            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors uppercase tracking-wider"
           >
             Components
           </Link>
           <Link
             href="/docs/examples"
-            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
+            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors uppercase tracking-wider"
           >
             Examples
           </Link>
           <Link
             href="/docs"
-            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors"
+            className="text-sm font-bold hover:text-primary hover:underline underline-offset-4 decoration-2 transition-colors uppercase tracking-wider"
           >
             Docs
           </Link>
         </div>
 
         {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex flex-1 items-center justify-end space-x-4">
           {/* Search Button */}
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex h-9 w-64 items-center gap-2 rounded-md border-2 border-foreground bg-background px-3 text-sm font-bold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground neobrutalism-shadow-sm"
+            className="flex h-10 w-64 items-center gap-2 rounded-md border-2 border-foreground bg-background px-3 text-sm font-bold text-muted-foreground transition-all hover:bg-muted hover:text-foreground neobrutalism-shadow-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
           >
             <svg
               className="h-4 w-4"
@@ -232,8 +232,8 @@ export function Navbar() {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            <span className="flex-1 text-left">Search components...</span>
-            <kbd className="pointer-events-none hidden h-5 min-w-[40px] select-none items-center justify-center gap-1 rounded border-2 border-foreground bg-muted font-mono text-[10px] font-bold sm:flex leading-none">
+            <span className="flex-1 text-left">Search...</span>
+            <kbd className="pointer-events-none hidden h-6 min-w-[32px] select-none items-center justify-center gap-1 rounded border-2 border-foreground bg-muted font-mono text-[10px] font-bold sm:flex leading-none">
               <span>⌘</span>
               <span>K</span>
             </kbd>
@@ -243,7 +243,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button size="sm">GitHub</Button>
+            <Button variant="outline" size="sm" className="h-10 font-bold neobrutalism-shadow-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">GitHub</Button>
           </Link>
         </div>
 

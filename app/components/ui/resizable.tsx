@@ -182,6 +182,16 @@ const ResizableHandle = React.forwardRef<HTMLDivElement, ResizableHandleProps>(
 
         if (!handleRef.current) return
 
+        const leftPanel = handleRef.current.previousElementSibling as HTMLElement
+        const rightPanel = handleRef.current.nextElementSibling as HTMLElement
+
+        if (!leftPanel || !rightPanel) return
+
+        const leftPanelId = leftPanel.getAttribute("data-resizable-panel")
+        const rightPanelId = rightPanel.getAttribute("data-resizable-panel")
+
+        if (!leftPanelId || !rightPanelId) return
+
         const container = handleRef.current.parentElement
         if (!container) return
 
@@ -191,29 +201,17 @@ const ResizableHandle = React.forwardRef<HTMLDivElement, ResizableHandleProps>(
 
         const deltaPercent = (delta / containerSize) * 100
 
-        const panelIndex = panels.findIndex((id) => {
-          const panel = container.querySelector(`[data-resizable-panel="${id}"]`)
-          return panel && (direction === "horizontal"
-            ? panel.getBoundingClientRect().right <= handleRef.current!.getBoundingClientRect().left
-            : panel.getBoundingClientRect().bottom <= handleRef.current!.getBoundingClientRect().top)
-        })
+        const newSizes = { ...startSizes }
+        const leftSize = startSizes[leftPanelId] || 50
+        const rightSize = startSizes[rightPanelId] || 50
 
-        if (panelIndex >= 0 && panelIndex < panels.length - 1) {
-          const leftPanelId = panels[panelIndex]
-          const rightPanelId = panels[panelIndex + 1]
+        const newLeftSize = Math.max(5, Math.min(95, leftSize + deltaPercent))
+        const newRightSize = Math.max(5, Math.min(95, rightSize - deltaPercent))
 
-          const newSizes = { ...startSizes }
-          const leftSize = newSizes[leftPanelId] || 50
-          const rightSize = newSizes[rightPanelId] || 50
+        newSizes[leftPanelId] = newLeftSize
+        newSizes[rightPanelId] = newRightSize
 
-          const newLeftSize = Math.max(10, Math.min(90, leftSize + deltaPercent))
-          const newRightSize = Math.max(10, Math.min(90, rightSize - deltaPercent))
-
-          newSizes[leftPanelId] = newLeftSize
-          newSizes[rightPanelId] = newRightSize
-
-          setSizes(newSizes)
-        }
+        setSizes(newSizes)
       }
 
       const handleMouseUp = () => {
@@ -234,10 +232,12 @@ const ResizableHandle = React.forwardRef<HTMLDivElement, ResizableHandleProps>(
         ref={handleRef}
         data-resizable-handle
         className={cn(
-          "relative flex items-center justify-center bg-background",
-          direction === "horizontal" ? "w-2 cursor-col-resize" : "h-2 cursor-row-resize",
+          "relative flex items-center justify-center bg-background z-10 transition-colors",
+          direction === "horizontal" 
+            ? "w-2 cursor-col-resize border-x-2 border-foreground hover:bg-primary/10" 
+            : "h-2 cursor-row-resize border-y-2 border-foreground hover:bg-primary/10",
           disabled && "cursor-default opacity-50",
-          isResizing && "bg-primary/20",
+          isResizing && "bg-primary text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
           className
         )}
         onMouseDown={handleMouseDown}
@@ -247,7 +247,7 @@ const ResizableHandle = React.forwardRef<HTMLDivElement, ResizableHandleProps>(
           <div
             className={cn(
               "rounded-full bg-foreground",
-              direction === "horizontal" ? "h-8 w-1" : "h-1 w-8"
+              direction === "horizontal" ? "h-6 w-1" : "h-1 w-6"
             )}
           />
         )}

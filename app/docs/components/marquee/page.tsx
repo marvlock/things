@@ -151,33 +151,7 @@ const MarqueeItem = React.forwardRef(
 MarqueeItem.displayName = "MarqueeItem"
 
 export { Marquee, MarqueeItem }`}
-            usageTs={`@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}`}
-            language="css"
-          />
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Usage</h2>
-
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { Marquee } from "@/components/ui/marquee"
+            usageTs={`import { Marquee } from "@/components/ui/marquee"
 
 function MyComponent() {
   return (
@@ -204,11 +178,6 @@ function MyComponent() {
   )
 }`}
           />
-
-          <p className="text-sm text-muted-foreground">
-            Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
-            with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.
-          </p>
 
           <h2 className="text-3xl font-bold mt-8 mb-4">Examples</h2>
           <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow space-y-6">

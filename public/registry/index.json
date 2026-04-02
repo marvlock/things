@@ -1,0 +1,335 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "name": "things",
+  "items": [
+    {
+      "name": "markdown",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/markdown.json"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/textarea.json"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/tabs.json"
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/accordion.json"
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/input-otp.json"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/label.json"
+      ]
+    },
+    {
+      "name": "image-card",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/image-card.json"
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/menubar.json"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/badge.json"
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/navigation-menu.json"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/sheet.json"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/drawer.json"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/checkbox.json"
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/data-table.json"
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/alert.json"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/combobox.json"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/skeleton.json"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/tooltip.json"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/progress.json"
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/carousel.json"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/button.json"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/pagination.json"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/slider.json"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/select.json"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/switch.json"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/dropdown-menu.json"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/alert-dialog.json"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/dialog.json"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/context-menu.json"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/scroll-area.json"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/date-picker.json"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/input.json"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/avatar.json"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/table.json"
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/sonner.json"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/collapsible.json"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/card.json"
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/form.json"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/calendar.json"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/popover.json"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/breadcrumb.json"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/radio-group.json"
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/resizable.json"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/hover-card.json"
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/marquee.json"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/sidebar.json"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "files": [
+        "registry/ui/command.json"
+      ]
+    }
+  ]
+}

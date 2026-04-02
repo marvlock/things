@@ -1,0 +1,17 @@
+{
+  "name": "slider",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/slider.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SliderProps\n  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, \"type\" | \"value\" | \"defaultValue\"> {\n  value?: number[]\n  defaultValue?: number[]\n  onValueChange?: (value: number[]) => void\n}\n\nconst Slider = React.forwardRef<HTMLInputElement, SliderProps>(\n  ({ className, value, defaultValue, onValueChange, min = 0, max = 100, step = 1, disabled, ...props }, ref) => {\n    const [internalValue, setInternalValue] = React.useState<number>(\n      value?.[0] ?? defaultValue?.[0] ?? Number(min)\n    )\n\n    React.useEffect(() => {\n      if (value !== undefined && value[0] !== undefined) {\n        setInternalValue(value[0])\n      }\n    }, [value])\n\n    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n      if (disabled) return\n      const newValue = Number(e.target.value)\n      setInternalValue(newValue)\n      onValueChange?.([newValue])\n    }\n\n    const percentage = ((internalValue - Number(min)) / (Number(max) - Number(min))) * 100\n\n    return (\n      <div className={cn(\"relative flex w-full items-center h-6\", className)}>\n        <input\n          type=\"range\"\n          min={min}\n          max={max}\n          step={step}\n          value={internalValue}\n          onChange={handleChange}\n          disabled={disabled}\n          ref={ref}\n          className={cn(\n            \"absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10\",\n            disabled && \"cursor-not-allowed\"\n          )}\n          {...props}\n        />\n        <div className=\"relative h-2 w-full rounded-full border-2 border-foreground bg-muted neobrutalism-shadow-sm\">\n          <div\n            className={cn(\n              \"absolute h-full rounded-full border-2 border-foreground bg-primary transition-all neobrutalism-shadow-sm\",\n              disabled && \"opacity-50\"\n            )}\n            style={{ width: `${percentage}%` }}\n          />\n        </div>\n        <div\n          className={cn(\n            \"absolute h-5 w-5 -translate-x-1/2 transform rounded-sm border-2 border-foreground bg-background transition-all neobrutalism-shadow-sm pointer-events-none\",\n            disabled && \"opacity-50\"\n          )}\n          style={{ left: `${percentage}%` }}\n        />\n      </div>\n    )\n  }\n)\nSlider.displayName = \"Slider\"\n\nexport { Slider }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/slider.tsx"
+    }
+  ]
+}

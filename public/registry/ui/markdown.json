@@ -1,0 +1,17 @@
+{
+  "name": "markdown",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/markdown.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport ReactMarkdown from \"react-markdown\"\nimport { cn } from \"@/lib/utils\"\n\ninterface MarkdownProps {\n  children: string\n  className?: string\n}\n\nexport function Markdown({ children, className }: MarkdownProps) {\n  return (\n    <div className={cn(\"prose prose-sm prose-invert max-w-none\", className)}>\n      <ReactMarkdown>{children}</ReactMarkdown>\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/markdown.tsx"
+    }
+  ]
+}

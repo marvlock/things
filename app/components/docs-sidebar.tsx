@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { ReactLenis } from "@studio-freight/react-lenis"
 
 const navigation = {
   "Getting started": [
@@ -82,8 +83,9 @@ export function DocsSidebar() {
 
       {/* Sidebar */}
       <nav
+        data-lenis-prevent
         className={cn(
-          "h-[calc(100vh-4rem)] border-r-2 border-foreground bg-background overflow-y-auto scrollbar-hide transition-all duration-300",
+          "h-[calc(100vh-4rem)] border-r-2 border-foreground bg-background overflow-y-auto scrollbar-hide scroll-smooth transition-all duration-300",
           "w-64 fixed top-16 left-0 z-30",
           !isOpen && "max-lg:-translate-x-full"
         )}

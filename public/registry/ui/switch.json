@@ -1,0 +1,17 @@
+{
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/switch.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, \"type\" | \"onChange\"> {\n  onCheckedChange?: (checked: boolean) => void\n  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void\n}\n\nconst Switch = React.forwardRef<HTMLInputElement, SwitchProps>(\n  ({ className, checked, onChange, onCheckedChange, disabled, ...props }, ref) => {\n    const [isChecked, setIsChecked] = React.useState(checked ?? false)\n\n    React.useEffect(() => {\n      if (checked !== undefined) {\n        setIsChecked(checked)\n      }\n    }, [checked])\n\n    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n      if (disabled) return\n      const checkedVal = e.target.checked\n      setIsChecked(checkedVal)\n      onCheckedChange?.(checkedVal)\n      onChange?.(e)\n    }\n\n    return (\n      <label\n        className={cn(\n          \"relative inline-flex h-6 w-11 items-center rounded-full border-2 border-foreground transition-all cursor-pointer neobrutalism-shadow-sm\",\n          isChecked ? \"bg-primary\" : \"bg-muted\",\n          disabled && \"opacity-50 cursor-not-allowed\",\n          className\n        )}\n      >\n        <input\n          type=\"checkbox\"\n          className=\"sr-only peer\"\n          checked={isChecked}\n          onChange={handleChange}\n          disabled={disabled}\n          ref={ref}\n          {...props}\n        />\n        <span\n          className={cn(\n            \"inline-block h-4 w-4 transform rounded-sm border-2 border-foreground bg-background transition-all peer-active:scale-95\",\n            isChecked ? \"translate-x-6\" : \"translate-x-1\"\n          )}\n        />\n      </label>\n    )\n  }\n)\nSwitch.displayName = \"Switch\"\n\nexport { Switch }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/switch.tsx"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "progress",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/progress.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {\n  value?: number\n  max?: number\n}\n\nconst Progress = React.forwardRef<HTMLDivElement, ProgressProps>(\n  ({ className, value = 0, max = 100, ...props }, ref) => {\n    const percentage = Math.min(Math.max((value / max) * 100, 0), 100)\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"relative h-4 w-full overflow-hidden rounded-full border-2 border-foreground bg-background\",\n          className\n        )}\n        role=\"progressbar\"\n        aria-valuenow={value}\n        aria-valuemin={0}\n        aria-valuemax={max}\n        {...props}\n      >\n        <div\n          className=\"h-full bg-primary transition-all duration-300 ease-in-out\"\n          style={{ width: `${percentage}%` }}\n        />\n      </div>\n    )\n  }\n)\nProgress.displayName = \"Progress\"\n\nexport { Progress }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/progress.tsx"
+    }
+  ]
+}

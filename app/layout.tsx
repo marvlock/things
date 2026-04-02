@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "A collection of things-styled components",
 };
 
+import { SmoothScroll } from "./components/smooth-scroll";
+
 export default function RootLayout({
   children,
 }: {
@@ -19,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className={space_grotesk.className}>{children}</body>
+      <body className={space_grotesk.className}>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

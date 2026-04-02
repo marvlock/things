@@ -1,0 +1,17 @@
+{
+  "name": "image-card",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/image-card.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface ImageCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  src: string\n  alt: string\n  caption?: string\n  aspectRatio?: \"square\" | \"landscape\" | \"portrait\" | \"auto\"\n}\n\nconst ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>(\n  ({ className, src, alt, caption, aspectRatio = \"auto\", ...props }, ref) => {\n    const getAspectRatioClass = () => {\n      switch (aspectRatio) {\n        case \"square\":\n          return \"aspect-square\"\n        case \"landscape\":\n          return \"aspect-video\"\n        case \"portrait\":\n          return \"aspect-[3/4]\"\n        case \"auto\":\n        default:\n          return \"\"\n      }\n    }\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"rounded-lg border-2 border-foreground bg-card text-card-foreground neobrutalism-shadow overflow-hidden\",\n          className\n        )}\n        {...props}\n      >\n        <div className={cn(\"relative w-full overflow-hidden\", getAspectRatioClass())}>\n          <img\n            src={src}\n            alt={alt}\n            className=\"h-full w-full object-cover\"\n          />\n        </div>\n        {caption && (\n          <div className=\"bg-primary text-primary-foreground px-4 py-2 text-center text-sm font-bold\">\n            {caption}\n          </div>\n        )}\n      </div>\n    )\n  }\n)\nImageCard.displayName = \"ImageCard\"\n\ninterface ImageCardImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {\n  aspectRatio?: \"square\" | \"landscape\" | \"portrait\" | \"auto\"\n}\n\nconst ImageCardImage = React.forwardRef<HTMLImageElement, ImageCardImageProps>(\n  ({ className, aspectRatio = \"auto\", ...props }, ref) => {\n    const getAspectRatioClass = () => {\n      switch (aspectRatio) {\n        case \"square\":\n          return \"aspect-square\"\n        case \"landscape\":\n          return \"aspect-video\"\n        case \"portrait\":\n          return \"aspect-[3/4]\"\n        case \"auto\":\n        default:\n          return \"\"\n      }\n    }\n\n    return (\n      <div className={cn(\"relative w-full overflow-hidden\", getAspectRatioClass())}>\n        <img\n          ref={ref}\n          alt=\"\"\n          className={cn(\"h-full w-full object-cover\", className)}\n          {...props}\n        />\n      </div>\n    )\n  }\n)\nImageCardImage.displayName = \"ImageCardImage\"\n\ntype ImageCardCaptionProps = React.HTMLAttributes<HTMLDivElement>\n\nconst ImageCardCaption = React.forwardRef<HTMLDivElement, ImageCardCaptionProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\"bg-primary text-primary-foreground px-4 py-2 text-center text-sm font-bold\", className)}\n      {...props}\n    />\n  )\n)\nImageCardCaption.displayName = \"ImageCardCaption\"\n\nexport {\n  ImageCard,\n  ImageCardImage,\n  ImageCardCaption,\n}\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/image-card.tsx"
+    }
+  ]
+}

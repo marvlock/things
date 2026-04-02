@@ -13,8 +13,18 @@ export default function ChangelogPage() {
         <div className="prose prose-lg max-w-none space-y-6">
           <div className="space-y-4">
             <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
-              <h3 className="text-2xl font-bold mb-2">v0.4.0</h3>
+              <h3 className="text-2xl font-bold mb-2">v0.5.0</h3>
               <p className="text-muted-foreground mb-4">Current version</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Fixed critical build errors in Hover Card, Marquee, and Scroll Area docs</li>
+                <li>Overhauled Resizable component logic using DOM-neighbor detection for robust multi-panel support</li>
+                <li>Refactored documentation layout and unified the Usage section pattern across all components</li>
+                <li>Enhanced documentation with premium high-fidelity component examples</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
+              <h3 className="text-2xl font-bold mb-2">v0.4.0</h3>
+              <p className="text-muted-foreground mb-4">Previous version</p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>Added Blog Website example</li>
                 <li>Added Contact Form example</li>

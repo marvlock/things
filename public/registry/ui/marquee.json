@@ -1,0 +1,17 @@
+{
+  "name": "marquee",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/marquee.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {\n  children: React.ReactNode\n  direction?: \"left\" | \"right\"\n  speed?: number\n  pauseOnHover?: boolean\n  className?: string\n}\n\nconst Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>(\n  ({ children, direction = \"left\", speed = 50, pauseOnHover = false, className, ...props }, ref) => {\n    const [isPaused, setIsPaused] = React.useState(false)\n    const childrenArray = React.Children.toArray(children)\n    \n    const duration = `${speed}s`\n    const animationName = direction === \"left\" ? \"marquee\" : \"marquee-right\"\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\"overflow-hidden whitespace-nowrap border-t-2 border-b-2 border-foreground py-4\", className)}\n        onMouseEnter={() => pauseOnHover && setIsPaused(true)}\n        onMouseLeave={() => pauseOnHover && setIsPaused(false)}\n        {...props}\n      >\n        <div\n          className=\"flex\"\n          style={{\n            animationName: isPaused ? \"none\" : animationName,\n            animationDuration: isPaused ? \"0s\" : duration,\n            animationTimingFunction: \"linear\",\n            animationIterationCount: \"infinite\",\n          }}\n        >\n          {React.Children.map(childrenArray, (child, index) => (\n            <div key={`first-${index}`} className=\"flex-shrink-0 px-4\">\n              {child}\n            </div>\n          ))}\n          {React.Children.map(childrenArray, (child, index) => (\n            <div key={`second-${index}`} className=\"flex-shrink-0 px-4\">\n              {child}\n            </div>\n          ))}\n        </div>\n      </div>\n    )\n  }\n)\nMarquee.displayName = \"Marquee\"\n\ntype MarqueeItemProps = React.HTMLAttributes<HTMLDivElement>\n\nconst MarqueeItem = React.forwardRef<HTMLDivElement, MarqueeItemProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\"flex-shrink-0\", className)}\n      {...props}\n    />\n  )\n)\nMarqueeItem.displayName = \"MarqueeItem\"\n\nexport { Marquee, MarqueeItem }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/marquee.tsx"
+    }
+  ]
+}

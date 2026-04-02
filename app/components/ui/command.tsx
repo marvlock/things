@@ -202,13 +202,16 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
     const { searchValue, setSearchValue } = useCommand()
 
     return (
-      <div className="p-2 border-b-2 border-foreground">
+      <div className="flex items-center border-b-2 border-foreground">
         <Input
           ref={ref}
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Type a command or search..."
-          className={className}
+          className={cn(
+            "flex h-12 w-full rounded-none border-0 bg-transparent px-4 py-3 text-sm outline-none focus-visible:ring-0 neobrutalism-shadow-none",
+            className
+          )}
           {...props}
         />
       </div>

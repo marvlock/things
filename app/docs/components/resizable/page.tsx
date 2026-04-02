@@ -529,11 +529,6 @@ export {
 }`}
           />
 
-          <p className="text-sm text-muted-foreground">
-            Make sure you also have the <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> file
-            with the <code className="bg-muted px-1 py-0.5 rounded">cn</code> helper function.
-          </p>
-
           <h2 className="text-3xl font-bold mt-8 mb-4">Examples</h2>
           <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow space-y-6">
             <div>
@@ -541,7 +536,7 @@ export {
               <div className="h-[200px] border-2 border-foreground rounded-md overflow-hidden">
                 <ResizablePanelGroup direction="horizontal" className="h-full">
                   <ResizablePanel defaultSize={50}>
-                    <div className="flex h-full items-center justify-center bg-primary text-primary-foreground border-r-2 border-foreground">
+                    <div className="flex h-full items-center justify-center bg-primary text-primary-foreground">
                       <span className="font-bold">One</span>
                     </div>
                   </ResizablePanel>
@@ -549,14 +544,14 @@ export {
                   <ResizablePanel defaultSize={50}>
                     <ResizablePanelGroup direction="vertical" className="h-full">
                       <ResizablePanel defaultSize={50}>
-                        <div className="flex h-full items-center justify-center bg-primary text-primary-foreground border-b-2 border-foreground">
-                          <span className="font-bold">Two</span>
+                        <div className="flex h-full items-center justify-center bg-primary text-primary-foreground font-black uppercase tracking-widest text-sm">
+                          Two
                         </div>
                       </ResizablePanel>
                       <ResizableHandle />
                       <ResizablePanel defaultSize={50}>
-                        <div className="flex h-full items-center justify-center bg-primary text-primary-foreground">
-                          <span className="font-bold">Three</span>
+                        <div className="flex h-full items-center justify-center bg-[#56E3A6] text-black font-black uppercase tracking-widest text-sm">
+                          Three
                         </div>
                       </ResizablePanel>
                     </ResizablePanelGroup>
@@ -567,23 +562,23 @@ export {
 
             <div>
               <h3 className="text-xl font-bold mb-4">Vertical</h3>
-              <div className="h-[200px] border-2 border-foreground rounded-md overflow-hidden">
+              <div className="h-[300px] border-2 border-foreground rounded-md overflow-hidden bg-black">
                 <ResizablePanelGroup direction="vertical" className="h-full">
                   <ResizablePanel defaultSize={33}>
-                    <div className="flex h-full items-center justify-center bg-primary text-primary-foreground border-b-2 border-foreground">
-                      <span className="font-bold">Top</span>
+                    <div className="flex h-full items-center justify-center bg-[#F4FD50] text-black font-black uppercase tracking-widest">
+                      Top
                     </div>
                   </ResizablePanel>
                   <ResizableHandle />
                   <ResizablePanel defaultSize={33}>
-                    <div className="flex h-full items-center justify-center bg-primary text-primary-foreground border-b-2 border-foreground">
-                      <span className="font-bold">Middle</span>
+                    <div className="flex h-full items-center justify-center bg-primary text-primary-foreground font-black uppercase tracking-widest">
+                      Middle
                     </div>
                   </ResizablePanel>
                   <ResizableHandle />
                   <ResizablePanel defaultSize={34}>
-                    <div className="flex h-full items-center justify-center bg-primary text-primary-foreground">
-                      <span className="font-bold">Bottom</span>
+                    <div className="flex h-full items-center justify-center bg-[#56E3A6] text-black font-black uppercase tracking-widest">
+                      Bottom
                     </div>
                   </ResizablePanel>
                 </ResizablePanelGroup>

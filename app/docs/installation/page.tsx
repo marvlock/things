@@ -1,6 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { CodeBlock } from "@/app/components/code-block"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
+import { Markdown } from "@/app/components/ui/markdown"
 
 export default function InstallationPage() {
   return (
@@ -11,118 +15,100 @@ export default function InstallationPage() {
           Get started with Things in your project.
         </p>
 
-        <div className="prose prose-lg max-w-none space-y-6">
-          <p>
-            Things components are designed to be copied directly into your project. There&apos;s no 
-            npm package to install, no UI library dependencies. Just copy the component code and customize 
-            it to your needs. All components are built from scratch using React and native HTML elements.
-          </p>
+        <div className="max-w-none space-y-6">
+          <Markdown className="text-xl">
+            {`Things components are built with **shadcn/ui** standards. You can install them via our CLI registry or copy the code manually.`}
+          </Markdown>
 
-          <h2 className="text-3xl font-bold mt-8 mb-4">Requirements</h2>
+          <h2 className="text-4xl font-bold mt-12 mb-4 tracking-tight border-b-4 border-foreground pb-2 inline-block">Option 1: CLI (Recommended)</h2>
           <p>
-            Before using Things components, make sure you have:
+            The fastest way to install components. This automatically handles dependencies and places files in your `components/ui` folder.
           </p>
-          <ul className="list-disc list-inside space-y-2 ml-4">
-            <li><strong>React 18+</strong> Installed in your project</li>
-            <li><strong>Tailwind CSS</strong> Configured and set up</li>
-            <li><strong>TypeScript</strong> (recommended but not required)</li>
-          </ul>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Install Dependencies</h2>
-          <p>
-            Components use minimal dependencies. Install these packages:
-          </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`npm install class-variance-authority clsx tailwind-merge`}</code>
-            </pre>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            <code className="bg-muted px-1 py-0.5 rounded">class-variance-authority</code> For component variants
-            <br />
-            <code className="bg-muted px-1 py-0.5 rounded">clsx</code> For className utilities
-            <br />
-            <code className="bg-muted px-1 py-0.5 rounded">tailwind-merge</code> For merging Tailwind classes
-          </p>
-          <p className="mt-4">
-            No UI library dependencies required. Everything is built from scratch.
-          </p>
-
-          <h2 className="text-3xl font-bold mt-8 mb-4">Installation Steps</h2>
           
-          <h3 className="text-2xl font-bold mt-6 mb-3">Step 1: Copy the utils file</h3>
+          <Tabs defaultValue="npm" className="w-full">
+            <TabsList className="mb-4">
+              <TabsTrigger value="npm">npm</TabsTrigger>
+              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+              <TabsTrigger value="yarn">yarn</TabsTrigger>
+              <TabsTrigger value="bun">bun</TabsTrigger>
+            </TabsList>
+            <TabsContent value="npm">
+              <div className="space-y-4">
+                <p className="text-sm font-bold opacity-80">Initialize shadcn (if not already done):</p>
+                <CodeBlock code="npx shadcn@latest init" language="bash" />
+                <p className="text-sm font-bold opacity-80">Add a component (e.g. Button):</p>
+                <CodeBlock code="npx shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+              </div>
+            </TabsContent>
+            <TabsContent value="pnpm">
+              <div className="space-y-4">
+                <p className="text-sm font-bold opacity-80">Initialize shadcn:</p>
+                <CodeBlock code="pnpm dlx shadcn@latest init" language="bash" />
+                <p className="text-sm font-bold opacity-80">Add a component:</p>
+                <CodeBlock code="pnpm dlx shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+              </div>
+            </TabsContent>
+            <TabsContent value="yarn">
+              <div className="space-y-4">
+                <p className="text-sm font-bold opacity-80">Initialize shadcn:</p>
+                <CodeBlock code="npx shadcn@latest init" language="bash" />
+                <p className="text-sm font-bold opacity-80">Add a component:</p>
+                <CodeBlock code="npx shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+              </div>
+            </TabsContent>
+            <TabsContent value="bun">
+              <div className="space-y-4">
+                <p className="text-sm font-bold opacity-80">Initialize shadcn:</p>
+                <CodeBlock code="bunx --bun shadcn@latest init" language="bash" />
+                <p className="text-sm font-bold opacity-80">Add a component:</p>
+                <CodeBlock code="bunx --bun shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+              </div>
+            </TabsContent>
+          </Tabs>
+
+          <h2 className="text-4xl font-bold mt-16 mb-4 tracking-tight border-b-4 border-foreground pb-2 inline-block">Option 2: Manual</h2>
+          
+          <h3 className="text-2xl font-bold mt-6 mb-3">1. Install core dependencies</h3>
+          <p>Choose your preferred package manager to install the required styling utilities:</p>
+          <Tabs defaultValue="npm" className="w-full">
+            <TabsList className="mb-4">
+              <TabsTrigger value="npm">npm</TabsTrigger>
+              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+              <TabsTrigger value="yarn">yarn</TabsTrigger>
+              <TabsTrigger value="bun">bun</TabsTrigger>
+            </TabsList>
+            <TabsContent value="npm">
+              <CodeBlock code="npm install class-variance-authority clsx tailwind-merge lucide-react" language="bash" />
+            </TabsContent>
+            <TabsContent value="pnpm">
+              <CodeBlock code="pnpm add class-variance-authority clsx tailwind-merge lucide-react" language="bash" />
+            </TabsContent>
+            <TabsContent value="yarn">
+              <CodeBlock code="yarn add class-variance-authority clsx tailwind-merge lucide-react" language="bash" />
+            </TabsContent>
+            <TabsContent value="bun">
+              <CodeBlock code="bun add class-variance-authority clsx tailwind-merge lucide-react" language="bash" />
+            </TabsContent>
+          </Tabs>
+
+          <h3 className="text-2xl font-bold mt-8 mb-3">2. Add the utils helper</h3>
           <p>
-            First, copy the utility function file. Create a <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code> or <code className="bg-muted px-1 py-0.5 rounded">lib/utils.js</code> file in your project:
+            Create <code className="bg-muted px-1 py-0.5 rounded">lib/utils.ts</code>:
           </p>
-          <div className="space-y-4">
-            <div>
-              <p className="mb-2"><strong>TypeScript:</strong></p>
-              <CodeBlock
-                code={`import { type ClassValue, clsx } from "clsx"
+          <CodeBlock
+            code={`import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }`}
-                language="ts"
-              />
-            </div>
-            <div>
-              <p className="mb-2"><strong>JavaScript:</strong></p>
-              <CodeBlock
-                code={`import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+            language="typescript"
+          />
 
-export function cn(...inputs) {
-  return twMerge(clsx(inputs))
-}`}
-                language="js"
-              />
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold mt-6 mb-3">Step 2: Copy component code</h3>
-          <p>
-            Copy the component code from the documentation pages. For example, to use the Button component:
-          </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`1. Go to the Button component docs
-2. Copy the entire component code
-3. Create components/ui/button.tsx in your project
-4. Paste the code`}</code>
-            </pre>
-          </div>
-
-          <h3 className="text-2xl font-bold mt-6 mb-3">Step 3: Use the component</h3>
-          <p>
-            Import and use the component in your project:
-          </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`import { Button } from "@/app/components/ui/button"
-
-export default function MyPage() {
-  return <Button>Click me</Button>
-}`}</code>
-            </pre>
-          </div>
-
-          <h3 className="text-2xl font-bold mt-6 mb-3">Step 4: Configure Tailwind (if needed)</h3>
-          <p>
-            Make sure your <code className="bg-muted px-1 py-0.5 rounded">tailwind.config.js</code> includes the component paths:
-          </p>
-          <div className="rounded-lg border-2 border-foreground bg-muted p-6 neobrutalism-shadow">
-            <pre className="text-sm font-mono">
-              <code>{`module.exports = {
-  content: [
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-  ],
-  // ... rest of config
-}`}</code>
-            </pre>
-          </div>
+          <h3 className="text-2xl font-bold mt-8 mb-3">3. Copy and Paste</h3>
+          <Markdown>
+            {`Browse the documentation for any component and copy either the **TypeScript** or **JavaScript** code into your project.`}
+          </Markdown>
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
@@ -141,4 +127,3 @@ export default function MyPage() {
     </div>
   )
 }
-

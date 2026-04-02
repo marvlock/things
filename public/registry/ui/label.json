@@ -1,0 +1,17 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "ui/label.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>\n\nconst Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <label\n        ref={ref}\n        className={cn(\n          \"text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n          className\n        )}\n        {...props}\n      />\n    )\n  }\n)\nLabel.displayName = \"Label\"\n\nexport { Label }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/label.tsx"
+    }
+  ]
+}
