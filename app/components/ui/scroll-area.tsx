@@ -36,7 +36,7 @@ ScrollArea.displayName = "ScrollArea"
 const ScrollBar = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & { orientation?: "vertical" | "horizontal" }
->(({ className, orientation = "vertical", ...props }, ref) => {
+>(() => {
   return null // Native scrollbars are used instead
 })
 ScrollBar.displayName = "ScrollBar"

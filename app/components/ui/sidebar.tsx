@@ -202,11 +202,13 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
     )
 
     if (asChild && React.isValidElement(children)) {
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       return React.cloneElement(children, {
-        className: cn(buttonClassName, children.props.className),
+        className: cn(buttonClassName, (children.props as any).className),
         ref,
         ...props,
       } as any)
+      /* eslint-enable @typescript-eslint/no-explicit-any */
     }
 
     return (

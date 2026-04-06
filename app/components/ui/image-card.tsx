@@ -34,6 +34,7 @@ const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>(
         {...props}
       >
         <div className={cn("relative w-full overflow-hidden", getAspectRatioClass())}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
             alt={alt}
@@ -73,6 +74,7 @@ const ImageCardImage = React.forwardRef<HTMLImageElement, ImageCardImageProps>(
 
     return (
       <div className={cn("relative w-full overflow-hidden", getAspectRatioClass())}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={ref}
           alt=""
