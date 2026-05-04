@@ -84,16 +84,16 @@ export function ComponentCode({ tsCode, jsCode, usageTs, usageJs, filename }: Co
                     <TabsTrigger value="yarn" className="text-xs">yarn</TabsTrigger>
                   </TabsList>
                   <TabsContent value="npm">
-                    <CodeBlock code={`npx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" />
+                    <CodeBlock code={`npx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                   <TabsContent value="pnpm">
-                    <CodeBlock code={`pnpm dlx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" />
+                    <CodeBlock code={`pnpm dlx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                   <TabsContent value="bun">
-                    <CodeBlock code={`bunx --bun shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" />
+                    <CodeBlock code={`bunx --bun shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                   <TabsContent value="yarn">
-                    <CodeBlock code={`yarn dlx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" />
+                    <CodeBlock code={`yarn dlx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                 </Tabs>
               </div>
@@ -101,7 +101,8 @@ export function ComponentCode({ tsCode, jsCode, usageTs, usageJs, filename }: Co
               <div className="space-y-6">
                 <CodeBlock 
                   code={lang === "ts" ? tsCode : jsCode} 
-                  language={lang === "ts" ? "tsx" : "jsx"} 
+                  language={lang === "ts" ? "tsx" : "jsx"}
+                  context={`Component implementation for ${filename}`}
                 />
                 <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-md border border-foreground/10 font-medium">
                   <strong>Note:</strong> Make sure you have the <code className="bg-background px-1.5 py-0.5 rounded border border-foreground/20 italic">lib/utils.ts</code> file 
@@ -115,7 +116,8 @@ export function ComponentCode({ tsCode, jsCode, usageTs, usageJs, filename }: Co
                 <h3 className="text-2xl font-bold tracking-tight">Usage</h3>
                 <CodeBlock 
                   code={lang === "js" ? (usageJs || usageTs) : usageTs} 
-                  language={lang === "js" ? "jsx" : "tsx"} 
+                  language={lang === "js" ? "jsx" : "tsx"}
+                  context={`Usage example for ${filename} component`}
                 />
               </div>
             )}

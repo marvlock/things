@@ -10,7 +10,6 @@ const navigation = {
   "Getting started": [
     { name: "Introduction", href: "/docs" },
     { name: "Installation", href: "/docs/installation" },
-    { name: "Resources", href: "/docs/resources" },
     { name: "Examples", href: "/docs/examples" },
     { name: "Changelog", href: "/docs/changelog" },
   ],
@@ -90,7 +89,7 @@ export function DocsSidebar() {
           !isOpen && "max-lg:-translate-x-full"
         )}
       >
-        <div className="p-6">
+        <div className="px-6 pb-6 pt-20 lg:p-6">
           <div className="space-y-8">
             {Object.entries(navigation).map(([category, items]) => (
               <div key={category} className="relative">

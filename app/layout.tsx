@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 import { SmoothScroll } from "./components/smooth-scroll";
+import { AskAIFAB } from "./components/ask-ai-fab";
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={space_grotesk.className}>
         <SmoothScroll>{children}</SmoothScroll>
+        <AskAIFAB />
       </body>
     </html>
   );

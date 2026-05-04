@@ -21,6 +21,9 @@ export default function ChangelogPage() {
                 <li>Rewrote Scroll Area to use native styled scrollbars, fixing touch/wheel scrolling and accessibility</li>
                 <li>Unified Hover Card documentation heading with title-case capitalization</li>
                 <li>Updated package manager installation guides to correctly reflect yarn dlx workflow</li>
+                <li>Added AI context buttons for copying code and page context into AI tools</li>
+                <li>Cleaned up docs navigation by removing the Resources page and updating related links</li>
+                <li>Adjusted docs layout and responsive navbar spacing for cleaner page alignment</li>
               </ul>
             </div>
             <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
@@ -115,9 +118,9 @@ export default function ChangelogPage() {
         </div>
 
         <div className="mt-12 flex items-center justify-between border-t-2 border-foreground pt-8">
-          <Link href="/docs/resources">
+          <Link href="/docs/installation">
             <Button variant="outline" size="lg">
-              ← Resources
+              ← Installation
             </Button>
           </Link>
           <div></div>

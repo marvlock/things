@@ -117,9 +117,9 @@ export function cn(...inputs: ClassValue[]) {
               ← Introduction
             </Button>
           </Link>
-          <Link href="/docs/resources">
+          <Link href="/docs/changelog">
             <Button variant="outline" size="lg">
-              Resources →
+              Changelog →
             </Button>
           </Link>
         </div>

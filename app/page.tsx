@@ -91,7 +91,7 @@ export default function Home() {
           {(inView) => (
             <section className="container mx-auto px-4 sm:px-6 py-16 md:py-24 lg:py-32 overflow-hidden">
               <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6 min-w-0">
-                <p className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.12] sm:leading-[1.1] tracking-tight uppercase transition-all duration-500 break-words">
+                <div className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.12] sm:leading-[1.1] tracking-tight uppercase transition-all duration-500 break-words">
                   <span className={cn("block opacity-0", inView && "animate-text-reveal")} style={{ animationDelay: '0.1s' }}>
                     <span className="inline-flex flex-wrap items-baseline gap-x-3 gap-y-1 sm:gap-4 group max-w-full">
                       <span className="text-primary italic underline decoration-4 sm:decoration-8 decoration-black/10 group-hover:decoration-black cursor-default transition-all">Things</span>
@@ -124,7 +124,7 @@ export default function Home() {
                   <span className={cn("block opacity-0", inView && "animate-text-reveal")} style={{ animationDelay: '0.9s' }}>
                     <span className="inline-block bg-primary text-white px-4 py-2 sm:px-8 sm:py-3 text-[0.65em] sm:text-[0.85em] md:text-[1em] rounded-full border-4 border-black neobrutalism-shadow hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all max-w-full break-words align-middle">.READY_NOW</span> realities.
                   </span>
-                </p>
+                </div>
               </div>
             </section>
           )}
@@ -309,7 +309,7 @@ export default function Home() {
                 <ul className="space-y-3 sm:space-y-4 text-base sm:text-xl font-black">
                   <li><a href="https://github.com/marvlock/things/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">License</a></li>
                   <li><a href="https://github.com/marvlock/things" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Contribute</a></li>
-                  <li><Link href="/docs/resources" className="hover:text-primary transition-colors">Design Kit</Link></li>
+                  <li><Link href="/docs/examples" className="hover:text-primary transition-colors">Design Kit</Link></li>
                 </ul>
               </div>
             </div>
