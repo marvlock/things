@@ -7,6 +7,7 @@ interface AccordionContextValue {
   value: string[]
   onValueChange: (value: string[]) => void
   type: "single" | "multiple"
+  baseId: string
 }
 
 const AccordionContext = React.createContext<AccordionContextValue | undefined>(undefined)
@@ -19,7 +20,7 @@ const useAccordion = () => {
   return context
 }
 
-const AccordionItemContext = React.createContext<{ value: string } | undefined>(undefined)
+const AccordionItemContext = React.createContext<{ value: string; triggerId: string; panelId: string } | undefined>(undefined)
 
 const useAccordionItem = () => {
   const context = React.useContext(AccordionItemContext)
@@ -40,6 +41,7 @@ interface AccordionProps {
 
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
   ({ type = "single", defaultValue, value: controlledValue, onValueChange, children, className, ...props }, ref) => {
+    const baseId = React.useId()
     const [uncontrolledValue, setUncontrolledValue] = React.useState<string[]>(
       () => {
         if (defaultValue === undefined) return []
@@ -61,7 +63,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     }, [isControlled, onValueChange, type])
 
     return (
-      <AccordionContext.Provider value={{ value, onValueChange: handleValueChange, type }}>
+      <AccordionContext.Provider value={{ value, onValueChange: handleValueChange, type, baseId }}>
         <div ref={ref} className={cn("space-y-2", className)} {...props}>
           {children}
         </div>
@@ -77,8 +79,12 @@ interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, value, children, ...props }, ref) => {
+    const { baseId } = useAccordion()
+    const triggerId = `${baseId}-trigger-${value}`
+    const panelId = `${baseId}-panel-${value}`
+
     return (
-      <AccordionItemContext.Provider value={{ value }}>
+      <AccordionItemContext.Provider value={{ value, triggerId, panelId }}>
         <div
           ref={ref}
           className={cn("border-2 border-foreground rounded-lg neobrutalism-shadow overflow-hidden", className)}
@@ -96,7 +102,7 @@ type AccordionTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   ({ className, children, ...props }, ref) => {
-    const { value } = useAccordionItem()
+    const { value, triggerId, panelId } = useAccordionItem()
     const { value: openValues, onValueChange, type } = useAccordion()
     const isOpen = openValues.includes(value)
 
@@ -116,6 +122,9 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
       <button
         ref={ref}
         type="button"
+        id={triggerId}
+        aria-controls={panelId}
+        aria-expanded={isOpen}
         onClick={handleClick}
         className={cn(
           "flex w-full items-center justify-between bg-primary text-primary-foreground p-4 font-bold transition-colors hover:bg-primary/90",
@@ -150,13 +159,17 @@ type AccordionContentProps = React.HTMLAttributes<HTMLDivElement>
 
 const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
   ({ className, children, ...props }, ref) => {
-    const { value } = useAccordionItem()
+    const { value, triggerId, panelId } = useAccordionItem()
     const { value: openValues } = useAccordion()
     const isOpen = openValues.includes(value)
 
     return (
       <div
         ref={ref}
+        id={panelId}
+        role="region"
+        aria-labelledby={triggerId}
+        aria-hidden={!isOpen}
         className={cn(
           "overflow-hidden transition-all duration-200",
           isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
@@ -173,4 +186,3 @@ const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>
 AccordionContent.displayName = "AccordionContent"
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
-

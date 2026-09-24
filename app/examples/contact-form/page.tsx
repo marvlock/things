@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/app/components/ui/radio-group"
 import { Checkbox } from "@/app/components/ui/checkbox"
 import { Alert, AlertDescription, AlertTitle } from "@/app/components/ui/alert"
-import { Navbar } from "@/app/components/navbar"
+import { ArrowLeft, Mail, MessageCircle, Phone, Sparkles } from "lucide-react"
 
 export default function ContactFormExamplePage() {
   const [formData, setFormData] = React.useState({
@@ -151,21 +151,25 @@ export default function ContactFormExamplePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-[#F7F4EE] relative">
       {/* Dithering overlay */}
       <div className="fixed inset-0 dither-pattern pointer-events-none z-0 opacity-50" />
       
       <div className="relative z-10">
-        <Navbar />
-        
-        <div className="container mx-auto px-4 py-12 md:py-20">
-          <div className="mx-auto max-w-3xl">
+        <div className="container mx-auto px-4 py-8 md:py-14">
+          <div className="mx-auto max-w-5xl">
+            <Link href="/docs/examples" className="mb-8 inline-flex items-center gap-2 text-sm font-bold underline underline-offset-4"><ArrowLeft className="h-4 w-4" /> All examples</Link>
             {/* Header */}
-            <div className="mb-8 text-center">
-              <h1 className="mb-4 text-5xl font-bold md:text-6xl">Contact Us</h1>
-              <p className="text-xl text-muted-foreground">
-                Get in touch with us. We&apos;d love to hear from you!
-              </p>
+            <div className="mb-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="border-4 border-foreground bg-[#FF8FAB] p-7 neobrutalism-shadow-lg sm:p-10">
+                <div className="flex items-center justify-between"><span className="text-sm font-black uppercase tracking-[0.16em]">Say hello</span><MessageCircle className="h-7 w-7" /></div>
+                <h1 className="mt-10 text-5xl font-black uppercase leading-[0.88] md:text-6xl">Let&apos;s make<br />something good.</h1>
+                <p className="mt-6 max-w-md text-lg font-medium">Have a project, a question, or a bright idea? Send it over. We read every note.</p>
+              </div>
+              <div className="flex flex-col justify-between border-4 border-foreground bg-foreground p-7 text-background neobrutalism-shadow-lg sm:p-10">
+                <Sparkles className="h-7 w-7 text-[#FFD166]" />
+                <div><p className="text-sm font-black uppercase tracking-[0.16em] text-[#FFD166]">Response time</p><p className="mt-2 text-4xl font-black">Within 2 days</p><p className="mt-3 text-sm text-background/70">Usually sooner, Monday through Friday.</p></div>
+              </div>
             </div>
 
             {/* Success Alert */}
@@ -193,7 +197,7 @@ export default function ContactFormExamplePage() {
             )}
 
             {/* Contact Form */}
-            <Card className="border-4">
+            <Card className="border-4 bg-background">
               <CardHeader>
                 <CardTitle className="text-3xl">Send us a message</CardTitle>
                 <CardDescription>
@@ -212,8 +216,9 @@ export default function ContactFormExamplePage() {
                     >
                       {({ field, error }) => (
                         <FormItem>
-                          <FormLabel>Full Name *</FormLabel>
+                          <FormLabel htmlFor="contact-name">Full Name *</FormLabel>
                           <Input
+                            id="contact-name"
                             type="text"
                             placeholder="John Doe"
                             {...field}
@@ -232,8 +237,9 @@ export default function ContactFormExamplePage() {
                     >
                       {({ field, error }) => (
                         <FormItem>
-                          <FormLabel>Email Address *</FormLabel>
+                          <FormLabel htmlFor="contact-email">Email Address *</FormLabel>
                           <Input
+                            id="contact-email"
                             type="email"
                             placeholder="john@example.com"
                             {...field}
@@ -252,8 +258,9 @@ export default function ContactFormExamplePage() {
                     >
                       {({ field, error }) => (
                         <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
+                          <FormLabel htmlFor="contact-phone">Phone Number</FormLabel>
                           <Input
+                            id="contact-phone"
                             type="tel"
                             placeholder="+1 (555) 123-4567"
                             {...field}
@@ -265,9 +272,10 @@ export default function ContactFormExamplePage() {
 
                     {/* Inquiry Type */}
                     <div className="space-y-2">
-                      <Label>Inquiry Type *</Label>
+                      <Label id="inquiry-type-label">Inquiry Type *</Label>
                       <Select
                         value={formData.inquiryType}
+                        aria-labelledby="inquiry-type-label"
                         onValueChange={(value) => {
                           handleChange("inquiryType", value)
                           handleBlur("inquiryType")
@@ -294,9 +302,10 @@ export default function ContactFormExamplePage() {
 
                     {/* Preferred Contact Method */}
                     <div className="space-y-2">
-                      <Label>Preferred Contact Method *</Label>
+                      <Label id="contact-method-label">Preferred Contact Method *</Label>
                       <RadioGroup
                         value={formData.contactMethod}
+                        aria-labelledby="contact-method-label"
                         onValueChange={(value) => {
                           handleChange("contactMethod", value)
                           handleBlur("contactMethod")
@@ -304,20 +313,20 @@ export default function ContactFormExamplePage() {
                       >
                         <div className="flex flex-col space-y-3">
                           <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="email" id="email" />
-                            <Label htmlFor="email" className="font-normal cursor-pointer">
+                            <RadioGroupItem value="email" id="contact-method-email" />
+                            <Label htmlFor="contact-method-email" className="font-normal cursor-pointer">
                               Email
                             </Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="phone" id="phone" />
-                            <Label htmlFor="phone" className="font-normal cursor-pointer">
+                            <RadioGroupItem value="phone" id="contact-method-phone" />
+                            <Label htmlFor="contact-method-phone" className="font-normal cursor-pointer">
                               Phone
                             </Label>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="either" id="either" />
-                            <Label htmlFor="either" className="font-normal cursor-pointer">
+                            <RadioGroupItem value="either" id="contact-method-either" />
+                            <Label htmlFor="contact-method-either" className="font-normal cursor-pointer">
                               Either is fine
                             </Label>
                           </div>
@@ -339,8 +348,9 @@ export default function ContactFormExamplePage() {
                     >
                       {({ field, error }) => (
                         <FormItem>
-                          <FormLabel>Message *</FormLabel>
+                          <FormLabel htmlFor="contact-message">Message *</FormLabel>
                           <Textarea
+                            id="contact-message"
                             placeholder="Tell us what's on your mind..."
                             rows={6}
                             {...field}
@@ -429,9 +439,9 @@ export default function ContactFormExamplePage() {
 
             {/* Additional Info */}
             <div className="mt-8 grid gap-6 md:grid-cols-2">
-              <Card className="border-4">
+              <Card className="border-4 bg-[#FFD166]">
                 <CardHeader>
-                  <CardTitle>Email</CardTitle>
+                  <CardTitle className="flex items-center gap-2"><Mail className="h-5 w-5" /> Email</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -443,9 +453,9 @@ export default function ContactFormExamplePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-4">
+              <Card className="border-4 bg-[#75C2F6]">
                 <CardHeader>
-                  <CardTitle>Phone</CardTitle>
+                  <CardTitle className="flex items-center gap-2"><Phone className="h-5 w-5" /> Phone</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -472,4 +482,3 @@ export default function ContactFormExamplePage() {
     </div>
   )
 }
-

@@ -147,34 +147,34 @@ function EditUserDialog({ user }: { user: User }) {
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor={`user-${user.id}-name`}>Name</Label>
             <Input
-              id="name"
+              id={`user-${user.id}-name`}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor={`user-${user.id}-email`}>Email</Label>
             <Input
-              id="email"
+              id={`user-${user.id}-email`}
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="role">Role</Label>
+            <Label htmlFor={`user-${user.id}-role`}>Role</Label>
             <Input
-              id="role"
+              id={`user-${user.id}-role`}
               value={formData.role}
               onChange={(e) => setFormData({ ...formData, role: e.target.value })}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="status">Status</Label>
+            <Label htmlFor={`user-${user.id}-status`}>Status</Label>
             <Input
-              id="status"
+              id={`user-${user.id}-status`}
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value as User["status"] })}
             />
@@ -248,7 +248,7 @@ export default function AdminPanelExamplePage() {
   }
 
   return (
-    <div className="flex h-screen bg-background overflow-hidden">
+    <div className="flex min-h-screen bg-[#F7F4EE] overflow-hidden">
       {/* Sidebar */}
       <Sidebar collapsed={sidebarCollapsed} onCollapsedChange={setSidebarCollapsed}>
         <SidebarHeader>
@@ -295,51 +295,36 @@ export default function AdminPanelExamplePage() {
           </SidebarSection>
         </SidebarContent>
         <SidebarFooter>
-          {!sidebarCollapsed ? (
-            <Link href="/docs/examples">
-              <Button variant="outline" size="sm" className="w-full">
-                ← Back to Examples
-              </Button>
-            </Link>
-          ) : (
-            <Link href="/docs/examples">
-              <Button variant="outline" size="sm" className="w-full p-0">
-                ←
-              </Button>
-            </Link>
-          )}
+          <Link href="/docs/examples" aria-label="Back to examples" className="block w-full rounded-md border-2 border-foreground bg-background px-3 py-2 text-center text-sm font-bold text-foreground hover:bg-accent">
+            {sidebarCollapsed ? "←" : "← Back to Examples"}
+          </Link>
         </SidebarFooter>
       </Sidebar>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="border-b-2 border-foreground bg-background p-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">
+        <header className="border-b-2 border-foreground bg-background p-4 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div><p className="text-xs font-black uppercase tracking-[0.18em] text-muted-foreground">Acme operations</p><h1 className="mt-1 text-3xl font-black uppercase leading-none">
               {activeSection === "dashboard" && "Dashboard"}
               {activeSection === "users" && "User Management"}
               {activeSection === "settings" && "Settings"}
-            </h1>
-            <div className="flex items-center gap-4">
-              <Input
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-64"
-              />
-              <Button>New User</Button>
+            </h1></div>
+            <div className="flex w-full items-center gap-3 sm:w-auto">
+              {activeSection === "users" && <Input aria-label="Search users" placeholder="Search users..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="min-w-0 flex-1 sm:w-64" />}
+              <Button onClick={() => setActiveSection("users")}>Manage users</Button>
             </div>
           </div>
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-5 sm:p-6">
           {activeSection === "dashboard" && (
             <div className="space-y-6">
               {/* Stats Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="border-4">
+                <Card className="border-4 bg-[#FFD166]">
                   <CardHeader>
                     <CardTitle>Total Users</CardTitle>
                     <CardDescription>All registered users</CardDescription>
@@ -349,7 +334,7 @@ export default function AdminPanelExamplePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-4">
+                <Card className="border-4 bg-[#56E3A6]">
                   <CardHeader>
                     <CardTitle>Active Users</CardTitle>
                     <CardDescription>Currently active</CardDescription>
@@ -359,7 +344,7 @@ export default function AdminPanelExamplePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-4">
+                <Card className="border-4 bg-[#FF8FAB]">
                   <CardHeader>
                     <CardTitle>Pending Users</CardTitle>
                     <CardDescription>Awaiting approval</CardDescription>
@@ -369,7 +354,7 @@ export default function AdminPanelExamplePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-4">
+                <Card className="border-4 bg-[#75C2F6]">
                   <CardHeader>
                     <CardTitle>Total Revenue</CardTitle>
                     <CardDescription>This month</CardDescription>
@@ -381,7 +366,7 @@ export default function AdminPanelExamplePage() {
               </div>
 
               {/* Recent Activity */}
-              <Card className="border-4">
+              <Card className="border-4 bg-background">
                 <CardHeader>
                   <CardTitle>Recent Activity</CardTitle>
                   <CardDescription>Latest user actions</CardDescription>
@@ -389,7 +374,7 @@ export default function AdminPanelExamplePage() {
                 <CardContent>
                   <div className="space-y-4">
                     {mockUsers.slice(0, 5).map((user) => (
-                      <div key={user.id} className="flex items-center justify-between border-b-2 border-foreground pb-4 last:border-0 last:pb-0">
+                      <div key={user.id} className="flex items-center justify-between gap-4 border-b-2 border-foreground pb-4 last:border-0 last:pb-0">
                         <div>
                           <p className="font-bold">{user.name}</p>
                           <p className="text-sm text-muted-foreground">{user.email}</p>
@@ -438,12 +423,12 @@ export default function AdminPanelExamplePage() {
                 <CardContent>
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <Label>Site Name</Label>
-                      <Input defaultValue="Admin Panel" />
+                      <Label htmlFor="admin-site-name">Site Name</Label>
+                      <Input id="admin-site-name" defaultValue="Admin Panel" />
                     </div>
                     <div className="space-y-2">
-                      <Label>Site Description</Label>
-                      <Input defaultValue="Management Dashboard" />
+                      <Label htmlFor="admin-site-description">Site Description</Label>
+                      <Input id="admin-site-description" defaultValue="Management Dashboard" />
                     </div>
                     <div className="flex gap-4">
                       <Button>Save Changes</Button>
@@ -459,4 +444,3 @@ export default function AdminPanelExamplePage() {
     </div>
   )
 }
-

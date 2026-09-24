@@ -84,7 +84,7 @@ export function DocsSidebar() {
       <nav
         data-lenis-prevent
         className={cn(
-          "h-[calc(100vh-4rem)] border-r-2 border-foreground bg-background overflow-y-auto scrollbar-hide scroll-smooth transition-all duration-300",
+          "h-[calc(100vh-4rem)] border-r-2 border-foreground bg-[#FFFDF8] overflow-y-auto scrollbar-hide scroll-smooth transition-all duration-300",
           "w-64 fixed top-16 left-0 z-30",
           !isOpen && "max-lg:-translate-x-full"
         )}
@@ -94,7 +94,7 @@ export function DocsSidebar() {
             {Object.entries(navigation).map(([category, items]) => (
               <div key={category} className="relative">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-sm font-bold uppercase tracking-wider">
+                  <h3 className="text-xs font-black uppercase tracking-[0.16em] text-muted-foreground">
                     {category}
                   </h3>
                 </div>

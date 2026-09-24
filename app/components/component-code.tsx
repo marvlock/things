@@ -84,16 +84,16 @@ export function ComponentCode({ tsCode, jsCode, usageTs, usageJs, filename }: Co
                     <TabsTrigger value="yarn" className="text-xs">yarn</TabsTrigger>
                   </TabsList>
                   <TabsContent value="npm">
-                    <CodeBlock code={`npx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
+                    <CodeBlock code={`npx shadcn@latest add https://things.marvlock.com/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                   <TabsContent value="pnpm">
-                    <CodeBlock code={`pnpm dlx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
+                    <CodeBlock code={`pnpm dlx shadcn@latest add https://things.marvlock.com/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                   <TabsContent value="bun">
-                    <CodeBlock code={`bunx --bun shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
+                    <CodeBlock code={`bunx --bun shadcn@latest add https://things.marvlock.com/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                   <TabsContent value="yarn">
-                    <CodeBlock code={`yarn dlx shadcn@latest add https://things.marvlock.dev/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
+                    <CodeBlock code={`yarn dlx shadcn@latest add https://things.marvlock.com/registry/ui/${filename}.json`} language="bash" context={`Install command for ${filename} component`} />
                   </TabsContent>
                 </Tabs>
               </div>

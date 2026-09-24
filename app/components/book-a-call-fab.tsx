@@ -7,7 +7,7 @@ export function BookACallFAB() {
   return (
     <div className="fixed bottom-8 right-8 z-[100] group">
       <a
-        href="https://marvlock.dev"
+        href="https://marvlock.com"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-3 bg-primary border-[3px] border-black px-8 py-4 rounded-full text-white font-black text-xl neobrutalism-shadow-lg transition-all duration-300 hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"

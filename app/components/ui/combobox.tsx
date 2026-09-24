@@ -17,6 +17,8 @@ interface ComboboxContextValue {
   setSelectedIndex: (index: number) => void
   placeholder: string
   searchPlaceholder: string
+  listId: string
+  disabled: boolean
 }
 
 const ComboboxContext = React.createContext<ComboboxContextValue | undefined>(undefined)
@@ -47,13 +49,16 @@ interface ComboboxProps {
 }
 
 const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
-  ({ value: controlledValue, defaultValue = "", onValueChange, options, placeholder = "Select...", searchPlaceholder = "Search...", disabled = false, children, className, ...props }) => {
+  ({ value: controlledValue, defaultValue = "", onValueChange, options, placeholder = "Select...", searchPlaceholder = "Search...", disabled = false, children, className, ...props }, ref) => {
+    const listId = React.useId()
     const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue)
     const [open, setOpen] = React.useState(false)
     const [searchValue, setSearchValue] = React.useState("")
     const [selectedIndex, setSelectedIndex] = React.useState(-1)
     const containerRef = React.useRef<HTMLDivElement>(null)
     const listRef = React.useRef<HTMLDivElement>(null)
+
+    React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement)
 
     const isControlled = controlledValue !== undefined
     const value = isControlled ? controlledValue : uncontrolledValue
@@ -143,6 +148,8 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
         setSelectedIndex,
         placeholder,
         searchPlaceholder,
+        listId,
+        disabled,
       }}>
         <div ref={containerRef} className={cn("relative w-full", className)} {...props}>
           {children}
@@ -156,15 +163,32 @@ Combobox.displayName = "Combobox"
 type ComboboxTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const ComboboxTrigger = React.forwardRef<HTMLButtonElement, ComboboxTriggerProps>(
-  ({ className, children, ...props }, ref) => {
-    const { open, setOpen, value, options, placeholder } = useCombobox()
+  ({ className, children, disabled: triggerDisabled, onClick, onKeyDown, ...props }, ref) => {
+    const { open, setOpen, value, options, placeholder, listId, disabled } = useCombobox()
     const selectedOption = options.find(opt => opt.value === value)
+    const isDisabled = disabled || triggerDisabled
 
     return (
       <button
         ref={ref}
         type="button"
-        onClick={() => setOpen(!open)}
+        role="combobox"
+        aria-controls={listId}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        disabled={isDisabled}
+        onClick={(event) => {
+          onClick?.(event)
+          if (!event.defaultPrevented && !isDisabled) setOpen(!open)
+        }}
+        onKeyDown={(event) => {
+          onKeyDown?.(event)
+          if (event.defaultPrevented || isDisabled) return
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault()
+            setOpen(true)
+          }
+        }}
         className={cn(
           "flex w-full items-center justify-between h-10 rounded-lg border-2 border-foreground bg-background text-foreground px-3 py-2 text-sm font-bold transition-all hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 neobrutalism-shadow-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none",
           className
@@ -252,7 +276,7 @@ type ComboboxListProps = React.HTMLAttributes<HTMLDivElement>
 
 const ComboboxList = React.forwardRef<HTMLDivElement, ComboboxListProps>(
   ({ className, ...props }, ref) => {
-    const { filteredOptions, value, setValue, selectedIndex, setSelectedIndex } = useCombobox()
+    const { filteredOptions, value, setValue, selectedIndex, setSelectedIndex, listId } = useCombobox()
     const listRef = React.useRef<HTMLDivElement>(null)
 
     React.useImperativeHandle(ref, () => listRef.current as HTMLDivElement)
@@ -268,6 +292,9 @@ const ComboboxList = React.forwardRef<HTMLDivElement, ComboboxListProps>(
     return (
       <div
         ref={listRef}
+        id={listId}
+        role="listbox"
+        aria-label="Options"
         className={cn("max-h-[300px] overflow-y-auto", className)}
         {...props}
       >
@@ -279,6 +306,8 @@ const ComboboxList = React.forwardRef<HTMLDivElement, ComboboxListProps>(
             <button
               key={option.value}
               type="button"
+              role="option"
+              aria-selected={isSelected}
               onClick={() => setValue(option.value)}
               className={cn(
                 "w-full text-left px-4 py-2 text-sm font-bold transition-colors",
@@ -302,4 +331,3 @@ const ComboboxList = React.forwardRef<HTMLDivElement, ComboboxListProps>(
 ComboboxList.displayName = "ComboboxList"
 
 export { Combobox, ComboboxTrigger, ComboboxContent, ComboboxInput, ComboboxList }
-

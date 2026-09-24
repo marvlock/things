@@ -7,7 +7,7 @@ export default function DocsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="docs-shell flex min-h-screen flex-col">
       <Navbar />
       <div className="flex flex-1 relative">
         <DocsSidebar />

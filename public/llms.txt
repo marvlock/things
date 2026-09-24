@@ -1,0 +1,30 @@
+# Things
+
+> Things is an open-source collection of accessible, neobrutalist React components built with Tailwind CSS. Components can be copied into an application or installed through the shadcn registry.
+
+## Primary documentation
+
+- [Documentation](https://things.marvlock.com/docs): Installation, component guides, and examples.
+- [Installation](https://things.marvlock.com/docs/installation): Set up Things and install components.
+- [Component index](https://things.marvlock.com/docs/components/accordion): Browse the component documentation from the sidebar.
+- [Examples](https://things.marvlock.com/docs/examples): Complete interface examples.
+
+## Component registry
+
+- [Registry index](https://things.marvlock.com/registry/index.json): Machine-readable registry manifest.
+- [Button registry item](https://things.marvlock.com/registry/ui/button.json): Example component installation payload.
+
+## Usage
+
+Initialize shadcn in the destination project, then install a component:
+
+```bash
+npx shadcn@latest add https://things.marvlock.com/registry/ui/button.json
+```
+
+## Important notes
+
+- Things targets React, TypeScript, and Tailwind CSS projects.
+- Components are source-owned after installation; adapt styles and behavior to the destination application.
+- Prefer the individual component documentation page for API and accessibility details before suggesting implementation changes.
+- The project source and issue tracker are at [github.com/marvlock/things](https://github.com/marvlock/things).

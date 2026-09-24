@@ -4,14 +4,11 @@ import { Markdown } from "@/app/components/ui/markdown"
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen bg-background py-8 md:py-12 pr-8 md:pr-12">
+    <div className="min-h-screen py-8 md:py-12 pr-8 md:pr-12">
       <div className="mx-auto max-w-3xl pl-8 md:pl-12">
-        <h1 className="mb-4 text-5xl font-bold">Introduction</h1>
-        <p className="mb-8 text-xl text-muted-foreground">
-          Short introduction to the project.
-        </p>
+        <div className="mb-10 border-4 border-foreground bg-[#FF8FAB] p-6 neobrutalism-shadow-lg md:p-9"><p className="text-xs font-black uppercase tracking-[0.18em]">Things / introduction</p><h1 className="mt-5 text-5xl font-black uppercase leading-[0.9] md:text-7xl">A UI library<br />with a pulse.</h1><p className="mt-5 max-w-xl text-lg font-medium">Accessible, copy-ready React components for interfaces that should never feel generic.</p></div>
 
-        <div className="max-w-none space-y-6">
+        <div className="max-w-none space-y-6 rounded-lg border-2 border-foreground bg-background p-6 neobrutalism-shadow-sm md:p-8">
           <Markdown className="text-xl leading-relaxed">
             {`Things is a collection of blocky, funky-styled React components built with Tailwind CSS. 
 All components are **shadcn/ui compatible**, designed to be copied directly into your project, 

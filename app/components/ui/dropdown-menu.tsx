@@ -8,6 +8,7 @@ interface DropdownMenuContextValue {
   open: boolean
   setOpen: (open: boolean) => void
   triggerRef: React.MutableRefObject<HTMLElement | null>
+  contentId: string
 }
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextValue | undefined>(undefined)
@@ -27,6 +28,7 @@ interface DropdownMenuProps {
 }
 
 const DropdownMenu = ({ open: controlledOpen, onOpenChange, children }: DropdownMenuProps) => {
+  const contentId = React.useId()
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false)
   const triggerRef = React.useRef<HTMLElement | null>(null)
 
@@ -72,7 +74,7 @@ const DropdownMenu = ({ open: controlledOpen, onOpenChange, children }: Dropdown
   }, [open, handleOpenChange])
 
   return (
-    <DropdownMenuContext.Provider value={{ open, setOpen: handleOpenChange, triggerRef }}>
+    <DropdownMenuContext.Provider value={{ open, setOpen: handleOpenChange, triggerRef, contentId }}>
       {children}
     </DropdownMenuContext.Provider>
   )
@@ -84,7 +86,7 @@ interface DropdownMenuTriggerProps extends React.ButtonHTMLAttributes<HTMLButton
 
 const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
   ({ className, children, onClick, asChild, ...props }, ref) => {
-    const { open, setOpen, triggerRef: contextTriggerRef } = useDropdownMenu()
+    const { open, setOpen, triggerRef: contextTriggerRef, contentId } = useDropdownMenu()
     const localTriggerRef = React.useRef<HTMLButtonElement>(null)
 
     React.useImperativeHandle(ref, () => localTriggerRef.current as HTMLButtonElement)
@@ -96,8 +98,8 @@ const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTrig
     }, [contextTriggerRef])
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      setOpen(!open)
       onClick?.(e)
+      if (!e.defaultPrevented) setOpen(!open)
     }
 
     if (asChild && React.isValidElement(children)) {
@@ -105,6 +107,9 @@ const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTrig
         onClick: handleClick,
         ref: localTriggerRef,
         "data-dropdown-menu-trigger": true,
+        "aria-haspopup": "menu",
+        "aria-expanded": open,
+        "aria-controls": contentId,
         ...props,
       })
     }
@@ -112,7 +117,11 @@ const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTrig
     return (
       <button
         ref={localTriggerRef}
+        type="button"
         data-dropdown-menu-trigger
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-controls={contentId}
         onClick={handleClick}
         className={className}
         {...props}
@@ -130,7 +139,7 @@ interface DropdownMenuContentProps extends React.HTMLAttributes<HTMLDivElement> 
 
 const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContentProps>(
   ({ className, align = "start", children, ...props }, ref) => {
-    const { open, triggerRef } = useDropdownMenu()
+    const { open, setOpen, triggerRef, contentId } = useDropdownMenu()
     const contentRef = React.useRef<HTMLDivElement>(null)
 
     React.useImperativeHandle(ref, () => contentRef.current as HTMLDivElement)
@@ -174,6 +183,9 @@ const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContent
     const content = (
       <div
         ref={contentRef}
+        id={contentId}
+        role="menu"
+        aria-orientation="vertical"
         data-dropdown-menu-content
         className={cn(
           "fixed z-50 min-w-[8rem] rounded-md border-2 border-foreground bg-background neobrutalism-shadow p-1",
@@ -181,6 +193,24 @@ const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContent
         )}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}
+        onKeyDown={(event) => {
+          const items = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitem"]:not(:disabled)'))
+          const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement)
+          const nextIndex = event.key === "ArrowDown" ? (currentIndex + 1) % items.length
+            : event.key === "ArrowUp" ? (currentIndex - 1 + items.length) % items.length
+            : event.key === "Home" ? 0
+            : event.key === "End" ? items.length - 1
+            : -1
+
+          if (nextIndex >= 0 && items.length > 0) {
+            event.preventDefault()
+            items[nextIndex].focus()
+          } else if (event.key === "Escape") {
+            event.preventDefault()
+            setOpen(false)
+            triggerRef.current?.focus()
+          }
+        }}
         {...props}
       >
         {children}
@@ -212,8 +242,9 @@ const DropdownMenuItem = React.forwardRef<HTMLButtonElement, DropdownMenuItemPro
     return (
       <button
         ref={ref}
+        type="button"
+        role="menuitem"
         onClick={handleClick}
-        onMouseDown={(e) => e.preventDefault()}
         className={cn(
           "relative flex w-full cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm font-bold outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50",
           inset && "pl-8",
@@ -273,4 +304,3 @@ export {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
 }
-

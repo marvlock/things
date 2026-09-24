@@ -33,10 +33,12 @@ interface DatePickerProps {
 }
 
 const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
-  ({ value: controlledValue, defaultValue, onValueChange, disabled = false, children, className, ...props }) => {
+  ({ value: controlledValue, defaultValue, onValueChange, disabled = false, children, className, ...props }, ref) => {
     const [uncontrolledValue, setUncontrolledValue] = React.useState<Date | undefined>(defaultValue)
     const [open, setOpen] = React.useState(false)
     const containerRef = React.useRef<HTMLDivElement>(null)
+
+    React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement)
 
     const isControlled = controlledValue !== undefined
     const value = isControlled ? controlledValue : uncontrolledValue
@@ -233,4 +235,3 @@ const DatePickerContent = React.forwardRef<HTMLDivElement, DatePickerContentProp
 DatePickerContent.displayName = "DatePickerContent"
 
 export { DatePicker, DatePickerInput, DatePickerContent }
-

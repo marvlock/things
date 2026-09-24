@@ -1,7 +1,9 @@
 import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 import { Button } from "@/app/components/ui/button"
 import { Badge } from "@/app/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { NewsletterForm } from "../newsletter-form"
 
 // Blog post data
 const blogPosts: Record<string, {
@@ -163,24 +165,15 @@ export default async function BlogPostPage({
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
+    <div className="min-h-screen bg-[#F7F4EE]">
       <header className="border-b-2 border-foreground bg-background sticky top-0 z-50">
         <div className="mx-auto max-w-7xl px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/examples/blog">
-              <h1 className="text-2xl font-bold">Things Blog</h1>
-            </Link>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-5"><Link href="/docs/examples" className="inline-flex items-center gap-2 text-sm font-bold underline underline-offset-4"><ArrowLeft className="h-4 w-4" /> Examples</Link><Link href="/examples/blog" className="text-2xl font-black">Things Blog</Link></div>
             <nav className="hidden md:flex gap-4">
-              <Link href="/examples/blog">
-                <Button variant="ghost" size="sm">Home</Button>
-              </Link>
-              <Link href="/examples/blog">
-                <Button variant="ghost" size="sm">Articles</Button>
-              </Link>
-              <Link href="/examples/blog">
-                <Button variant="ghost" size="sm">About</Button>
-              </Link>
+              <Link href="/examples/blog" className="text-sm font-bold hover:underline">Home</Link>
+              <Link href="/examples/blog" className="text-sm font-bold hover:underline">Articles</Link>
+              <Link href="/examples/blog" className="text-sm font-bold hover:underline">About</Link>
             </nav>
             <Button size="sm">Subscribe</Button>
           </div>
@@ -189,11 +182,7 @@ export default async function BlogPostPage({
 
       {/* Article */}
       <article className="mx-auto max-w-4xl px-6 py-12">
-        <Link href="/examples/blog">
-          <Button variant="ghost" className="mb-8">
-            ← Back to Articles
-          </Button>
-        </Link>
+        <Link href="/examples/blog" className="mb-8 inline-flex items-center gap-2 text-sm font-bold underline underline-offset-4"><ArrowLeft className="h-4 w-4" /> Back to articles</Link>
 
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
@@ -305,14 +294,7 @@ export default async function BlogPostPage({
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 rounded-md border-2 border-foreground bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-                <Button>Subscribe</Button>
-              </div>
+              <NewsletterForm inputId="article-email" />
             </CardContent>
           </Card>
         </div>
@@ -323,18 +305,12 @@ export default async function BlogPostPage({
         <div className="mx-auto max-w-7xl px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2025 Things Blog. Built with Things components.
+              © 2026 Things Blog. Built with Things components.
             </p>
             <div className="flex gap-4">
-              <Link href="/examples/blog">
-                <Button variant="ghost" size="sm">Privacy</Button>
-              </Link>
-              <Link href="/examples/blog">
-                <Button variant="ghost" size="sm">Terms</Button>
-              </Link>
-              <Link href="/docs/examples">
-                <Button variant="ghost" size="sm">← Back to Examples</Button>
-              </Link>
+              <Link href="/examples/blog" className="text-sm font-bold hover:underline">Privacy</Link>
+              <Link href="/examples/blog" className="text-sm font-bold hover:underline">Terms</Link>
+              <Link href="/docs/examples" className="text-sm font-bold hover:underline">← Back to Examples</Link>
             </div>
           </div>
         </div>
@@ -342,4 +318,3 @@ export default async function BlogPostPage({
     </div>
   )
 }
-

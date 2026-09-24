@@ -37,7 +37,7 @@ export default function InstallationPage() {
                 <p className="text-sm font-bold opacity-80">Initialize shadcn (if not already done):</p>
                 <CodeBlock code="npx shadcn@latest init" language="bash" />
                 <p className="text-sm font-bold opacity-80">Add a component (e.g. Button):</p>
-                <CodeBlock code="npx shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+                <CodeBlock code="npx shadcn@latest add https://things.marvlock.com/registry/ui/button.json" language="bash" />
               </div>
             </TabsContent>
             <TabsContent value="pnpm">
@@ -45,7 +45,7 @@ export default function InstallationPage() {
                 <p className="text-sm font-bold opacity-80">Initialize shadcn:</p>
                 <CodeBlock code="pnpm dlx shadcn@latest init" language="bash" />
                 <p className="text-sm font-bold opacity-80">Add a component:</p>
-                <CodeBlock code="pnpm dlx shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+                <CodeBlock code="pnpm dlx shadcn@latest add https://things.marvlock.com/registry/ui/button.json" language="bash" />
               </div>
             </TabsContent>
             <TabsContent value="yarn">
@@ -53,7 +53,7 @@ export default function InstallationPage() {
                 <p className="text-sm font-bold opacity-80">Initialize shadcn:</p>
                 <CodeBlock code="yarn dlx shadcn@latest init" language="bash" />
                 <p className="text-sm font-bold opacity-80">Add a component:</p>
-                <CodeBlock code="yarn dlx shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+                <CodeBlock code="yarn dlx shadcn@latest add https://things.marvlock.com/registry/ui/button.json" language="bash" />
               </div>
             </TabsContent>
             <TabsContent value="bun">
@@ -61,7 +61,7 @@ export default function InstallationPage() {
                 <p className="text-sm font-bold opacity-80">Initialize shadcn:</p>
                 <CodeBlock code="bunx --bun shadcn@latest init" language="bash" />
                 <p className="text-sm font-bold opacity-80">Add a component:</p>
-                <CodeBlock code="bunx --bun shadcn@latest add https://things.marvlock.dev/registry/ui/button.json" language="bash" />
+                <CodeBlock code="bunx --bun shadcn@latest add https://things.marvlock.com/registry/ui/button.json" language="bash" />
               </div>
             </TabsContent>
           </Tabs>

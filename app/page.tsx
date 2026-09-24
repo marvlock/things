@@ -287,7 +287,7 @@ export default function Home() {
                   <a href="https://github.com/marvlock/things" target="_blank" rel="noopener noreferrer" className="h-14 w-14 flex items-center justify-center border-4 border-black bg-white neobrutalism-shadow-sm hover:bg-[#56E3A6] transition-colors active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
                     <Github className="h-8 w-8" />
                   </a>
-                  <a href="https://marvlock.dev" target="_blank" rel="noopener noreferrer" className="h-14 w-14 p-1 flex items-center justify-center border-4 border-black bg-white neobrutalism-shadow-sm hover:bg-[#A388EE] transition-colors active:translate-x-[2px] active:translate-y-[2px] active:shadow-none overflow-hidden">
+                  <a href="https://marvlock.com" target="_blank" rel="noopener noreferrer" className="h-14 w-14 p-1 flex items-center justify-center border-4 border-black bg-white neobrutalism-shadow-sm hover:bg-[#A388EE] transition-colors active:translate-x-[2px] active:translate-y-[2px] active:shadow-none overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/marvlock-logo.png" alt="Marvlock" className="w-full h-full object-contain" />
                   </a>

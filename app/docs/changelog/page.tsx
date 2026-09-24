@@ -13,8 +13,23 @@ export default function ChangelogPage() {
         <div className="prose prose-lg max-w-none space-y-6">
           <div className="space-y-4">
             <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+                <h3 className="text-2xl font-bold">v0.6.0</h3>
+                <span className="rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">In development</span>
+              </div>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Added a universal Ask AI action that copies paste-ready context for any coding assistant</li>
+                <li>Added AI and crawler discovery via <code>llms.txt</code>, <code>robots.txt</code>, <code>sitemap.xml</code>, and a web manifest</li>
+                <li>Set <code>things.marvlock.com</code> as the canonical documentation and component registry domain</li>
+                <li>Added repository instructions for coding agents and a unified lint, typecheck, and build command</li>
+                <li>Improved Tabs, Accordion, Combobox, and Dropdown Menu keyboard behavior and ARIA relationships</li>
+                <li>Added Launch Board, Pricing, and Workspace Settings application examples</li>
+                <li>Refreshed Blog, Contact Form, and Admin Panel examples with consistent navigation, responsive layouts, and improved form semantics</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border-2 border-foreground p-6 neobrutalism-shadow">
               <h3 className="text-2xl font-bold mb-2">v0.5.1</h3>
-              <p className="text-muted-foreground mb-4">Current version</p>
+              <p className="text-muted-foreground mb-4">Previous version</p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>Fixed Sidebar layout stability and centering in collapsed state</li>
                 <li>Added SidebarGroup component to manage visibility of non-sidebar elements when collapsed</li>
@@ -129,4 +144,3 @@ export default function ChangelogPage() {
     </div>
   )
 }
-

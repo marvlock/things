@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/app/components/ui/button";
 import { Command, CommandDialog, CommandInput, CommandList, type CommandItem } from "@/app/components/ui/command";
 import { cn } from "@/lib/utils";
 
@@ -174,16 +173,16 @@ export function Navbar() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex-1 flex items-center">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 rounded-md px-1 py-1 transition-transform hover:-rotate-2">
             <svg
-              className="h-8 w-8"
+              className="brand-mark h-8 w-8 rounded-sm border-2 border-foreground"
               viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="32" height="32" fill="currentColor" />
+              <rect width="32" height="32" fill="#A388EE" />
               <rect x="6" y="6" width="20" height="20" fill="hsl(var(--background))" />
-              <rect x="10" y="10" width="12" height="12" fill="currentColor"/>
+              <rect x="10" y="10" width="12" height="12" fill="#56E3A6"/>
             </svg>
             <span className="text-lg md:text-xl font-bold transition-all">Things</span>
           </Link>

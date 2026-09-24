@@ -33,12 +33,7 @@ ScrollArea.displayName = "ScrollArea"
 /**
  * For backwards compatibility with shadcn-like APIs
  */
-const ScrollBar = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { orientation?: "vertical" | "horizontal" }
->(() => {
-  return null // Native scrollbars are used instead
-})
+const ScrollBar: React.FC<React.HTMLAttributes<HTMLDivElement> & { orientation?: "vertical" | "horizontal" }> = () => null
 ScrollBar.displayName = "ScrollBar"
 
 export { ScrollArea, ScrollBar }
